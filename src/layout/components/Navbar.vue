@@ -46,7 +46,11 @@ getLogin().then(data=>{
   computed: {
     isFollow() {
       // console.log()
-      return this.$store.state.user.username; //需要监听的数据
+      let par = {
+        username:this.$store.state.user.username,
+        show:this.$store.state.user.show
+      }
+      return par //需要监听的数据
     },
 
     ...mapGetters([
@@ -78,7 +82,8 @@ getLogin().then(data=>{
   },
   watch: {
     isFollow(newVal, oldVal) {
-      this.userName = newVal
+      this.userName = newVal.username
+      this.msg = newVal.show
     }
   },
   methods: {

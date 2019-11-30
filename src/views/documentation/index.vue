@@ -41,7 +41,7 @@
         <div  @click='toCc'><img src="@/assets/img/2.svg" alt="">
           <div>存储IO能力</div>
         </div>
-        <div><img src="@/assets/img/3.svg" alt="">
+        <div @click='tonNet'><img src="@/assets/img/3.svg" alt="">
           <div>网络IO能力</div>
         </div>
       </div>
@@ -63,6 +63,9 @@ export default {
 
     toCc(){
       this.$router.push({name:'block-test'})
+    },
+    tonNet(){
+      this.$router.push({name:'net-test'})
     }
   }
 }

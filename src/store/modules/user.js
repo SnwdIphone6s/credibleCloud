@@ -7,6 +7,7 @@ const state = {
   name: '',
   username: '',
   avatar: '',
+  show:'',
   introduction: '',
   roles: [],
   dict: {}
@@ -24,6 +25,9 @@ const mutations = {
   },
   SET_USERNAME: (state, username) => {
     state.username = username
+  },
+  SHOW: (state, show) => {
+    state.show = show
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
@@ -67,6 +71,11 @@ const actions = {
           this.loading = false
           reject(error)
         })
+    })
+  },
+  setShow({ commit, state }, show) {
+    return new Promise((resolve, reject) => {
+     commit('SHOW', show)
     })
   },
   // 用户来源

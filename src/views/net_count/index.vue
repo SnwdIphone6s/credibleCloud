@@ -1,6 +1,6 @@
 <template>
   <div class="computing">
-    <h4>存储IO能力测试</h4>
+    <h4>网络IO能力测试</h4>
     <div class="body">
       <div class="content">
         <el-form
@@ -45,7 +45,7 @@
 </template>
 <script>
 import Tab from "../computing/tab.vue";
-import { setCount } from "@/api/arrow";
+import { setNet } from "@/api/arrow";
 export default {
   components: {
     Tab
@@ -90,12 +90,11 @@ export default {
             task_name: this.ruleForm.name
           };
           this.loading = true;
-          setCount(param).then(data => {
+          setNet(param).then(data => {
             if (data.code == "success") {
               this.$message({
                 message: "添加成功",
-                type: "success",
-                duration: 1000
+                type: "success"
               });
               this.loading = false;
               this.resetForm(formName);

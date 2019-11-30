@@ -1,6 +1,6 @@
 <template>
-  <div class="loadcount" id="pdfDom_me">
-    <el-button type="primary" round @click="getPdf_me('UCloud存储IO能力测试')">下载为PDF</el-button>
+  <div class="loadcount" id="pdfDom_net">
+    <el-button type="primary" round @click="getPdf_net('网络IO能力测试')">下载为PDF</el-button>
     <div class="header">{{name}}: 云主机众测报告</div>
     <div class="line"></div>
     <div class="body">
@@ -120,7 +120,7 @@ export default {
     getList() {
       let param = {
         testId: this.testId,
-        type: "block"
+        type: "network"
       };
       vm_test_coun(param).then(data => {
         let count_data = data.data;

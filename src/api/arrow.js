@@ -28,3 +28,10 @@ export function setCount(data){
     data
   })
 }
+export function setNet(data){
+    return request({
+    url: 'vm/test_net',
+    method: 'post',
+    data
+  })
+}

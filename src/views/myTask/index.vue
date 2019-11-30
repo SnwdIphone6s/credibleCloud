@@ -43,7 +43,7 @@ Net,
         } else if(this.activeName == 'memory'){
 this.$router.push({name:'block-test'})
         }else{
-          console.log(1)
+         this.$router.push({name:'net-test'})
         }
         
       }

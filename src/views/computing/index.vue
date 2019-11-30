@@ -14,6 +14,10 @@
      <el-button @click="resetForm('ruleForm')">取消</el-button>
      <el-button type="primary" @click="submitForm('ruleForm')" :loading="loading" :disabled="disabled">开始测试</el-button>
      </el-form-item>
+           <p class="meg">任务名称将出现在任务列表</p>
+           <p class="meg til_1">仅支持Ubuntu 14.04,CentOS 6.5 系统</p>
+           <p class="meg til_2">请提供Root权限账号，否则测试可能无法正常进行</p>
+           <p class="meg til_3">密码将被明文保存，请使用后更换密码</p>
         </el-form>
       </div>
     </div>
@@ -70,6 +74,7 @@ export default {
               type: 'success'
              })
               this.loading = false
+              this.resetForm(formName)
             }
         })
         } else {
@@ -107,7 +112,28 @@ export default {
     >.content {
       width: 45%;
       margin: auto;
-      padding: 10px
+      padding: 10px;
+            .demo-ruleForm{
+        position: relative;
+        .meg{
+            position: absolute;
+            top: 0px;
+            left: 101%;
+            margin: 10px;
+            width: 313px;
+            color:#38448e;
+            font-size:14px;
+        }
+        .til_1{
+          top:200px;
+          }
+          .til_2{
+          top:280px;
+        }
+        .til_3{
+           top:350px;
+        }
+      }
     }
   }
 }

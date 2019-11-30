@@ -148,6 +148,19 @@ export const constantRoutes = [
       }
     ]
   },
+    {
+    path: '/CloudBenchMark/net-test',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/net_count'),
+        name: 'net-test',
+        hidden: true,
+        meta: { title: 'count', affix: true }
+      }
+    ]
+  },
   {
     path: '/CloudBenchMark/register',
     component: Layout,
@@ -182,6 +195,19 @@ export const constantRoutes = [
         path: '',
         component: () => import('@/views/myTask/loadMemory'),
         name: 'loadMemory',
+        hidden: true,
+        meta: { title: 'register', affix: true }
+      }
+    ]
+  },
+        {
+    path: '/download_net',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/myTask/loadNet'),
+        name: 'loadNet',
         hidden: true,
         meta: { title: 'register', affix: true }
       }

@@ -37,6 +37,7 @@
 </template>
 <script>
 import { getInfo_1 } from '@/api/user'
+import { Base64 } from 'js-base64';
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -133,6 +134,8 @@ export default {
       this.loading = true,
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          this.ruleForm.password = Base64.encode(this.ruleForm.password)
+          this.ruleForm.confirm_password =  Base64.encode(this.ruleForm.confirm_password)
           let params = this.ruleForm
           getInfo_1(params).then(data => {
             if (data.code == 'success') {

@@ -9,10 +9,17 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="test_name"
-        label="任务名称"
-        width="180">
-      </el-table-column>
+      label="任务名称"
+      >
+      <template slot-scope="scope">
+        <p>
+          {{scope.row.test_name}}
+        </p>
+        <p>
+          任务ID：{{scope.row.id}}
+        </p>
+      </template>
+    </el-table-column>
       <el-table-column
         prop="provider"
         label="提供商">
