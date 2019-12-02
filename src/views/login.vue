@@ -2,7 +2,7 @@
   <div class="login">
     <el-dialog title="用户登录" :visible="show" :show-close="false">
       <div class="login">
-        <el-form ref="form" :model="form" :rules="rules" class="form">
+        <el-form ref="form" :model="form" :rules="rules" class="form" v-if="hasPassword">
           <el-form-item prop="username" label="用户名">
             <el-input class="log-input" v-model="form.username" placeholder="请输入注册邮箱" prefix-icon="icon-login_user">
             </el-input>
@@ -16,21 +16,66 @@
             </el-input>
             <span class="checkCode" @click="createCode">{{ checkCode}}</span>
           </el-form-item>
-          <el-form-item>
+          <el-form-item class='btn'>
             <el-button @click="dialogVisible">取 消</el-button>
             <el-button type="primary" class="btn" @click="login('form')" :loading="loading">登录</el-button>
           </el-form-item>
+          <div class='setPass'> 
+             <span @click="forgetPassword">忘记密码</span>
+          </div>
+        </el-form>
+        <el-form v-else="hasPassword" ref="form_1" :model="form_1" :rules="rules_1" class="form form_2">
+          <el-form-item prop="username" label="用户名">
+            <el-input class="log-input" v-model="form_1.username" placeholder="请输入注册邮箱" prefix-icon="icon-login_user">
+            </el-input>
+          </el-form-item>
+           <el-form-item label="密码" prop="password">
+            <el-input type="password" v-model="form_1.password" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码" prop="confirm_password">
+            <el-input type="password" v-model="form_1.confirm_password" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item prop="seccode" class="inputbar" label="验证码">
+            <el-input class="log-input" v-model="form_1.seccode" placeholder="验证码" prefix-icon="icon-login_auth" @keydown.enter.native="login('form')">
+            </el-input>
+            <span class="checkCode" @click="createCode">{{ checkCode}}</span>
+          </el-form-item>
+          <el-form-item class='btn'>
+            <el-button @click="dialogVisible">取 消</el-button>
+            <el-button type="primary" class="btn" @click="setPassword('form')" :loading="loading">确定</el-button>
+          </el-form-item>
+          <div>
+          </div>
         </el-form>
       </div>
     </el-dialog>
   </div>
 </template>
 <script>
-import { login_1 } from '@/api/user'
+import { login_1,setPassword_api } from '@/api/user'
 import Cookies from 'js-cookie'
 import { Base64 } from 'js-base64';
 export default {
   data() {
+        var validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else {
+        if (this.form_1.confirm_password !== '') {
+          this.$refs.form_1.validateField('confirm_password');
+        }
+        callback();
+      }
+    };
+    var validatePass2 = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请再次输入密码'));
+      } else if (value !== this.form_1.password) {
+        callback(new Error('两次输入密码不一致!'));
+      } else {
+        callback();
+      }
+    };
     var validateEmail = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请正确填写邮箱'));
@@ -49,9 +94,16 @@ export default {
     };
     return {
       dialogFormVisible: false,
+      hasPassword:true,
       form: {
         username: "",
         password: "",
+        seccode: ""
+      },
+            form_1: {
+        username: "",
+        password: "",
+        confirm_password:"",
         seccode: ""
       },
       checkCode: '',
@@ -60,7 +112,17 @@ export default {
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
         seccode: [{ required: true, message: "请输验证码", trigger: "blur" }]
       },
-
+      rules_1: {
+        username: [{ required: true, validator: validateEmail, trigger: 'blur' }],
+        password: [
+          { required: true, validator: validatePass, trigger: 'blur' },
+          { pattern: /^(?=.*[0-9])(?=.*[a-zA-Z])(.{8,20})$/, message: '密码长度为8-20个字符，且至少包含一个字母' }
+        ],
+        confirm_password: [
+          { required: true, validator: validatePass2, trigger: 'blur' }
+        ],
+        seccode: [{ required: true, message: "请输验证码", trigger: "blur" }]
+      },
       formLabelWidth: '120px',
       loading: false,
     }
@@ -69,6 +131,9 @@ export default {
     this.createCode();
   },
   methods: {
+    forgetPassword(){
+this.hasPassword = false
+    },
     dialogVisible() {
       try {
         this.$refs['form'].resetFields();
@@ -76,7 +141,9 @@ export default {
 
       }
       this.loading = false
+      this.hasPassword = true
       this.$emit('changeShow', false)
+
     },
     createCode() {
       let code = "";
@@ -106,11 +173,39 @@ export default {
         code: this.form.seccode
       }
       await this.$store.dispatch('user/login_1', params).then(data => {
+        let name = data.username
+        this.$emit('setName', name)
         this.dialogVisible()
       }).catch(() => {
         this.loading = false
       })
     },
+    setPassword(){
+            if (this.form_1.seccode != this.checkCode) {
+        this.$message({
+          message: "验证码错误，注意大写字母",
+          type: "warning"
+        });
+        this.createCode();
+        return false;
+      };
+            this.loading = true
+      let password = Base64.encode(this.form_1.password)
+      let confirm_password = Base64.encode(this.form_1.confirm_password)
+      let params = {
+        username: this.form_1.username,
+        password,
+        confirm_password,
+        code: this.form_1.seccode
+      }
+      setPassword_api(params).then(data=>{
+               this.$message({
+          message: "重置成功，请登录",
+          type: "success"
+        });
+          this.hasPassword=true
+      })
+    }
   },
   props: {
     show: {
@@ -121,5 +216,15 @@ export default {
 }
 
 </script>
-<style>
+<style lang="scss" scoped>
+form{
+  position:relative;
+  .setPass{
+    position: absolute;
+    top: 70px;
+    left:65%;
+    cursor: pointer;
+    color:#8492fd,
+  }
+}
 </style>

@@ -184,7 +184,7 @@ export default {
       width: 40%;
       margin: auto;
       padding: 20px 0px;
-
+      
       button {
         margin-left: 100px;
         width: 80%;

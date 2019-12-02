@@ -49,7 +49,7 @@ service.interceptors.response.use(
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 'success') {
       Message({
-        message: '无权操作，可能尚未登录或登录超时，请重新登录',
+        message: res.message,
         type: 'error',
         duration: 1000
       })

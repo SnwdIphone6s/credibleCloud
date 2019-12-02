@@ -15,11 +15,13 @@
      <el-button type="primary" @click="submitForm('ruleForm')" :loading="loading" :disabled="disabled">开始测试</el-button>
      </el-form-item>
            <p class="meg">任务名称将出现在任务列表</p>
-           <p class="meg til_1">仅支持Ubuntu 14.04,CentOS 6.5 系统</p>
-           <p class="meg til_2">请提供Root权限账号，否则测试可能无法正常进行</p>
+           <p class="meg til_1">支持centos7、centos6、ubuntu14、ubuntu16系统</p>
+           <p class="meg til_2">请提供root权限账号，否则测试可能无法正常进行</p>
            <p class="meg til_3">密码将被明文保存，请使用后更换密码</p>
         </el-form>
+
       </div>
+      <p class="test">测试时间大约为<span>1小时</span>，请保持邮箱畅通，完成后将发送邮件提醒</p>
     </div>
   </div>
 </template>
@@ -75,6 +77,8 @@ export default {
              })
               this.loading = false
               this.resetForm(formName)
+              this.$router.push({name:'Guide'})
+
             }
         })
         } else {
@@ -111,7 +115,7 @@ export default {
 
     >.content {
       width: 45%;
-      margin: auto;
+      margin-left: 20%;
       padding: 10px;
             .demo-ruleForm{
         position: relative;
@@ -120,9 +124,11 @@ export default {
             top: 0px;
             left: 101%;
             margin: 10px;
-            width: 313px;
+            min-width: 313px;
             color:#38448e;
             font-size:14px;
+            word-wrap: break-word;
+            word-break: break-all;
         }
         .til_1{
           top:200px;
@@ -134,6 +140,14 @@ export default {
            top:350px;
         }
       }
+    }
+  }
+  .test{
+        text-align: center;
+    padding-bottom: 50px;
+    margin-top: -15px;
+    span{
+      color: red;
     }
   }
 }

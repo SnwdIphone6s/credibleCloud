@@ -16,15 +16,15 @@
           <el-form-item label="云主机信息" prop="name">
             <Tab @setComputing_change="setComputing_change" @activeName_change="activeName_change"></Tab>
           </el-form-item>
-          <el-form-item label="活动区域" prop="block_product_type">
-            <el-select v-model="ruleForm.block_product_type" placeholder="产品类型">
-              <el-option label="普通盘" value="hdd"></el-option>
-              <el-option label="SSD盘" value="ssd"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="任务名称" prop="block_dev_path">
-            <el-input v-model="ruleForm.block_dev_path"></el-input>
-          </el-form-item>
+<!--           <el-form-item label="产品类型" prop="block_product_type">
+  <el-select v-model="ruleForm.block_product_type" placeholder="产品类型">
+    <el-option label="普通盘" value="hdd"></el-option>
+    <el-option label="SSD盘" value="ssd"></el-option>
+  </el-select>
+</el-form-item>
+<el-form-item label="块存储路径" prop="block_dev_path">
+  <el-input v-model="ruleForm.block_dev_path"></el-input>
+</el-form-item> -->
           <el-form-item>
             <el-button @click="resetForm('ruleForm')">取消</el-button>
             <el-button
@@ -35,11 +35,12 @@
             >开始测试</el-button>
           </el-form-item>
           <p class="meg">任务名称将出现在任务列表</p>
-          <p class="meg til_1">仅支持Ubuntu 14.04,CentOS 6.5 系统</p>
-          <p class="meg til_2">请提供Root权限账号，否则测试可能无法正常进行</p>
+          <p class="meg til_1">支持centos7、centos6、ubuntu14、ubuntu16系统</p>
+          <p class="meg til_2">请提供root权限账号，否则测试可能无法正常进行</p>
           <p class="meg til_3">密码将被明文保存，请使用后更换密码</p>
         </el-form>
       </div>
+      <p class="test">测试时间大约为<span>20分钟</span>，请保持邮箱畅通，完成后将发送邮件提醒</p>
     </div>
   </div>
 </template>
@@ -58,7 +59,7 @@ export default {
       ruleForm: {
         name: "",
         block_product_type: "",
-        block_dev_path: ""
+        block_dev_path: "/"
       },
       rules: {
         name: [
@@ -98,6 +99,7 @@ export default {
               });
               this.loading = false;
               this.resetForm(formName);
+              this.$router.push({name:'Guide'})
             }
           });
         } else {
@@ -139,18 +141,20 @@ export default {
 
     > .content {
       width: 45%;
-      margin: auto;
+      margin-left: 20%;
       padding: 10px;
       .demo-ruleForm {
         position: relative;
         .meg {
           position: absolute;
-          top: 0px;
-          left: 101%;
-          margin: 10px;
-          width: 313px;
-          color: #38448e;
-          font-size: 14px;
+            top: 0px;
+            left: 101%;
+            margin: 10px;
+            min-width: 313px;
+            color:#38448e;
+            font-size:14px;
+            word-wrap: break-word;
+            word-break: break-all;
         }
         .til_1 {
           top: 200px;
@@ -162,6 +166,14 @@ export default {
           top: 350px;
         }
       }
+    }
+  }
+    .test{
+        text-align: center;
+    padding-bottom: 50px;
+    margin-top: -15px;
+    span{
+      color: red;
     }
   }
 }

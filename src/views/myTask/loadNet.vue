@@ -11,7 +11,7 @@
         </p>
         <p>
           <span>任务类型：</span>
-          <span>磁盘IO能力</span>
+          <span>网络IO能力</span>
         </p>
       </div>
       <div>
@@ -25,10 +25,10 @@
         </p>
       </div>
       <div>
-        <p>
+ <!--        <p>
           <span>磁盘类型：</span>
           <span>{{count_data.product_type}}</span>
-        </p>
+        </p> -->
         <p>
           <span>报告来源：</span>
           <span>可信云 ( http://www.kexinyun.org) www.kexinyun.org )</span>
@@ -46,34 +46,23 @@
         <thead>
           <tr>
             <th>测试项</th>
-            <th>宽带</th>
-            <th>IOPS</th>
-            <th>反应时间</th>
+            <th>值</th>
+          
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td rowspan="2">4K随机</td>
-            <td>读 {{count_data.bandwidth_small_read_ran}}</td>
-            <td>读 {{count_data.iops_small_read_ran}}</td>
-            <td>读 {{count_data.latency_small_read_ran}}</td>
+            <td>带宽</td>
+            <td>{{count_data.bandwidth}}</td>
+           
           </tr>
+         
           <tr>
-            <td>写 {{count_data.bandwidth_small_write_ran}}</td>
-            <td>写 {{count_data.iops_small_write_ran}}</td>
-            <td>写 {{count_data.latency_small_write_ran}}</td>
+            <td >延迟</td>
+            <td>{{count_data.latency}}</td>
+          
           </tr>
-          <tr>
-            <td rowspan="2">64K顺序</td>
-            <td>读 {{count_data.bandwidth_large_read_seq}}</td>
-            <td>读 {{count_data.iops_large_read_seq}}</td>
-            <td>读 {{count_data.latency_large_read_seq}}</td>
-          </tr>
-          <tr>
-            <td>写 {{count_data.bandwidth_large_write_seq}}</td>
-            <td>写 {{count_data.iops_large_write_seq}}</td>
-            <td>写 {{count_data.latency_large_write_seq}}</td>
-          </tr>
+         
         </tbody>
       </table>
     </div>
@@ -102,7 +91,7 @@ export default {
       BarChartData: {
         a_Data: [],
         b_Data: [],
-        name: ["4K随机", "64K顺序"]
+        name: ["带宽", "延迟"]
       }
     };
   },
@@ -126,8 +115,8 @@ export default {
         let count_data = data.data;
         this.count_data = count_data;
         this.BarChartData.a_Data = [
-          count_data.score_4k.toFixed(4) * 1,
-          count_data.total_4k_small_weight
+          count_data.bandwidth.toFixed(4) * 1,
+          50
         ];
         // this.count_data = count_data;
         // this.BarChartData.a_Data = [
@@ -135,14 +124,14 @@ export default {
         //   30
         // ];
         this.BarChartData.b_Data = [
-          count_data.score_64k.toFixed(4) * 1,
-          count_data.total_64k_large_weight
+          count_data.latency.toFixed(4) * 1,
+          50
         ];
         // this.BarChartData.v_Data = [
         //   (count_data.s_ram ).toFixed(4) * 1,
         //   40
         // ];
-        this.total = count_data.score_4k + count_data.score_64k;
+        this.total = count_data.bandwidth + count_data.latency;
         // this.cpu_int = data.data.test_result_list.filter(
         //   v => v.metric == "cpu_int"
         // );

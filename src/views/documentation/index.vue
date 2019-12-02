@@ -2,7 +2,7 @@
   <div class="documentation-container">
     <h4>性能测试</h4>
     <div>
-      <div class="top">
+<!--       <div class="top">
         <ol class="steps">
           <li class="step-active">
             <div class="step-line l_1"></div>
@@ -33,7 +33,13 @@
             </div>
           </li>
         </ol>
-      </div>
+      </div> -->
+      <el-steps :active="4" align-center class='line_1'>
+  <el-step title="填写参数"> </el-step>
+  <el-step title="提交测试"> </el-step>
+  <el-step title="等待处理"> </el-step>
+  <el-step title="查看报告"> </el-step>
+</el-steps>
       <div class="body">
         <div @click='toCom'><img src="@/assets/img/1.svg" alt="">
           <div>计算能力</div>
@@ -190,6 +196,7 @@ export default {
     >div {
       text-align: center;
       min-height: 400px;
+      background: #fff;
       border-radius: 4px;
       flex: 0 1 25%;
       margin: 0 55px;
@@ -212,6 +219,10 @@ export default {
     >div:hover {
       box-shadow: 0 0 10px #8492fd;
     }
+  }
+  .line_1{
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 }
 

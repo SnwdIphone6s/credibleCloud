@@ -1,9 +1,9 @@
-@import './variables.scss';
-@import './mixin.scss';
-@import './transition.scss';
-@import './element-ui.scss';
-@import './sidebar.scss';
-@import './btn.scss';
+@import "./variables.scss";
+@import "./mixin.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
+@import "./btn.scss";
 
 body {
   height: 100%;
@@ -91,7 +91,7 @@ div:focus {
     visibility: hidden;
     display: block;
     font-size: 0;
-    content: ' ';
+    content: " ";
     clear: both;
     height: 0;
   }
@@ -105,8 +105,8 @@ aside {
   display: block;
   line-height: 32px;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: #2c3e50;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -274,6 +274,11 @@ aside {
         flex: 0 1 50%;
       }
     }
+    > div.btn {
+      > div {
+        flex: 0 1 100%;
+      }
+    }
     > div:nth-child(3) {
       > div {
         display: flex;
@@ -294,7 +299,38 @@ aside {
       }
     }
     button:nth-child(2) {
-      width: 70%;
+      width: 50%;
     }
   }
+  .form_2 {
+    > div:nth-child(4) {
+      > div {
+        display: flex;
+      }
+      .checkCode {
+        border: 1px solid #13ce66;
+        border-radius: 4px;
+        margin-left: 5px;
+        width: 200px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.el-step__icon.is-text{
+      background: #8492fd;
+    color: #fff;
+    font-size: 16px;
+    border: #8492fd;
+}
+.el-step__icon{
+  width:40px;
+  height:40px;
+}
+.el-step.is-horizontal .el-step__line{
+  top:20px;
+}
+.el-form-item--medium .el-form-item__label{
+  text-align:left;
 }

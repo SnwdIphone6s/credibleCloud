@@ -55,8 +55,8 @@
               <el-input v-model="ruleForm.login_password" type="password"></el-input>
             </el-form-item>
             <el-form-item label="定时任务" prop="radio">
-              <el-radio v-model="ruleForm.radio_2" label="true">开启</el-radio>
-              <el-radio v-model="ruleForm.radio_2" label="false">关闭</el-radio>
+              <el-radio v-model="ruleForm.timed_task" :label=true>开启</el-radio>
+              <el-radio v-model="ruleForm.timed_task" :label=false>关闭</el-radio>
             </el-form-item>
             <el-form-item>
               <el-button size="small" @click="resetForm('ruleForm')">取消</el-button>
@@ -78,10 +78,10 @@ export default {
       activeName: "message",
       ruleForm: {
         provider: "",
-        login_username: "",
+        login_username: "root",
         ip: "",
         login_password: "",
-        radio_2: "true"
+        timed_task: false
       },
       allData: [],
       host_info_list: [],
@@ -99,18 +99,18 @@ export default {
       }
     };
   },
-  watch: {
-    "ruleForm.ip": function(curVal, oldVal) {
-      if (!curVal) {
-        this.ruleForm.ip = "";
-        return false;
-      }
-      // 实时把非数字的输入过滤掉
-      this.ruleForm.ip = curVal.match(/\d/gi)
-        ? curVal.match(/\d/gi).join("")
-        : "";
-    }
-  },
+  // watch: {
+  //   "ruleForm.ip": function(curVal, oldVal) {
+  //     if (!curVal) {
+  //       this.ruleForm.ip = "";
+  //       return false;
+  //     }
+  //     // 实时把非数字的输入过滤掉
+  //     this.ruleForm.ip = curVal.match(/\d/gi)
+  //       ? curVal.match(/\d/gi).join("")
+  //       : "";
+  //   }
+  // },
   created() {
     this.getList();
   },

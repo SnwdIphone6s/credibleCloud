@@ -1,6 +1,10 @@
 <template>
   <el-row class="panel-group">
     <div class="card-panel" :style="{backgroundImage:'url('+img+')'}">
+      <div class="til">
+        <div><span>全面</span> <span class="marker"></span><span>分秒必争</span></div>
+        <div><div>全面了解云服务性能</div><div>让您的选择分秒必争</div></div>
+      </div>
     </div>
     <div class="card-panel_1">
       <div class="left">
@@ -94,6 +98,14 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 800px;
+    .marker {      
+      width: 25px;      
+      height: 25px;      
+      border: 1px solid #fff;      
+      border-radius: 100px;      
+      background: #fff;      
+      display:inline-block;
+     }
   }
 
   .top {
@@ -159,6 +171,28 @@ export default {
     a {
       padding: 0 5px;
       cursor: pointer;
+    }
+  }
+  .til{
+    display: inline-block;
+    position: absolute;
+    right: 200px;
+    top: 200px;
+    >div:nth-child(1){
+      font-size: 50px;
+      color: #fff;
+      font-weight: bold;
+      >span:nth-child(3){
+         margin-left: 20px;
+      }
+    }
+    >div:nth-child(2){
+      margin-top:46px;
+      font-size: 34px;
+      color: #fff;
+      >div:nth-child(2){
+        margin-top:16px;
+      }
     }
   }
 }

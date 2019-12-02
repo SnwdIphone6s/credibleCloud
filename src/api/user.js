@@ -59,4 +59,17 @@ export function getLogin(query) {
     params: query
   })
 }
-
+export function setPassword_api(data) {
+  return request({
+    url: '/account/forget_password_update',
+    method: 'post',
+    data
+  })
+}
+export function setEmail_api(query) {
+  return request({
+    url: '/account/email_active',
+    method: 'get',
+    params: query
+  })
+}
