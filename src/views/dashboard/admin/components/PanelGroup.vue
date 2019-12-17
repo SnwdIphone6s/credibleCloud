@@ -123,6 +123,7 @@ export default {
   .foot {
     font-size: 18px;
     color: #666;
+    color: transparent;
   }
 
   .left_1 {
@@ -176,8 +177,8 @@ export default {
   .til{
     display: inline-block;
     position: absolute;
-    right: 200px;
-    top: 200px;
+    right: 8%;
+    top: 12%;
     >div:nth-child(1){
       font-size: 50px;
       color: #fff;

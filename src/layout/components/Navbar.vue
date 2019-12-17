@@ -60,6 +60,15 @@ export default {
       };
       this.setEmail(param);
     }
+    // getLogin().then(data => {
+    //   if (Object.keys(data.data).length) {
+    //       // store.dispatch('user/setShow', false)
+    //       Cookies.set('noLogin',true)
+    //     } else {
+    //       Cookies.set('noLogin',false)
+         
+    //     }
+    // })
   },
   mounted() {
     this.getLogin_1();
@@ -142,7 +151,10 @@ export default {
 
     async setLogout() {
       await this.$store.dispatch("user/logout").then(data=>{
-        this.$router.go(0);
+        this.$router.push('/dashboard')
+        // this.$router.go(0)
+          
+
       });
     },
     GetRequest() {

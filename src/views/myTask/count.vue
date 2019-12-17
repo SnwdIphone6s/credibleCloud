@@ -27,6 +27,16 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      :page-sizes="[5, 10, 20, 40]"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage"
+      :page-size="pagesize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total"
+    ></el-pagination>
   </div>
 </template>
 <script>
@@ -35,7 +45,10 @@ import Cookies from "js-cookie";
 export default {
   data() {
     return {
-      tableData: []
+      tableData: [],
+      currentPage: 1, //初始页
+      pagesize: 10, //    每页的数据
+      total: 1
     };
   },
   mounted() {
@@ -44,11 +57,14 @@ export default {
   methods: {
     getList() {
       let param = {
-        type: "host"
+        type: "host",
+        page: this.currentPage,
+        limit: this.pagesize
       };
       testInstance(param).then(data => {
         if (data.data.length) {
           this.tableData = data.data;
+          this.total = data.page.total_count;
         }
       });
     },
@@ -57,6 +73,15 @@ export default {
       this.$router.push({ path: "/download", query: { testId: v.id } });
       // Cookies.set('count',count)
       // this.$router.push({ name: 'downloadComputingPower' })
+    },
+    // 初始页currentPage、初始每页数据数pagesize和数据data
+    handleSizeChange: function(size) {
+      this.pagesize = size;
+      this.getList();
+    },
+    handleCurrentChange: function(currentPage) {
+      this.currentPage = currentPage;
+      this.getList();
     }
   }
 };

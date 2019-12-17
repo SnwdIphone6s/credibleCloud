@@ -269,6 +269,7 @@ aside {
       > label {
         flex: 0 1 15%;
         text-align: left;
+        min-width:67px;
       }
       > div {
         flex: 0 1 50%;
@@ -333,4 +334,7 @@ aside {
 }
 .el-form-item--medium .el-form-item__label{
   text-align:left;
+}
+.el-pagination{
+  padding-top:50px;
 }

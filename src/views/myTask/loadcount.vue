@@ -6,30 +6,36 @@
     <div class="body">
       <div class="name">
         <p>
-          <span>任务名称：</span><span>{{ count_data.test_name }}</span>
-        </p>
-        <p><span>任务类型：</span><span>计算能力测试</span></p>
-      </div>
-      <div>
-        <p>
-          <span>测试时间：</span><span>{{ count_data.time_start }}</span>
+          <span>任务名称：</span>
+          <span>{{ count_data.test_name }}</span>
         </p>
         <p>
-          <span>测试者：</span><span>{{ name }}</span>
+          <span>任务类型：</span>
+          <span>计算能力测试</span>
         </p>
       </div>
       <div>
         <p>
-          <span>配置参数：</span
-          ><span>
+          <span>测试时间：</span>
+          <span>{{ count_data.time_start }}</span>
+        </p>
+        <p>
+          <span>测试者：</span>
+          <span>{{ name }}</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <span>配置参数：</span>
+          <span>
             CUP:{{ count_data.cpu_core_num }}核 &nbsp;内存:{{
-              count_data.ram_num
-            }}M</span
-          >
+            count_data.ram_num
+            }}M
+          </span>
         </p>
         <p>
-          <span>报告来源：</span
-          ><span>可信云 ( http://www.kexinyun.org) www.kexinyun.org )</span>
+          <span>报告来源：</span>
+          <span>可信云 ( http://www.kexinyun.org) www.kexinyun.org )</span>
         </p>
       </div>
     </div>
@@ -110,7 +116,7 @@ export default {
         a_Data: [],
         b_Data: [],
         v_Data: [],
-        name:["CPU浮点", "CPU整形", "浮点"]
+        name: ["CPU浮点", "CPU整形", "浮点"]
       }
     };
   },
@@ -163,11 +169,11 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .loadcount {
-  button{
-    position:fixed;
-    right:20px;
+  button {
+    position: absolute;
+    right: 20px;
   }
   text-align: center;
   width: 80%;

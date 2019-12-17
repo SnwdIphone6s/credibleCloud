@@ -2,44 +2,12 @@
   <div class="documentation-container">
     <h4>性能测试</h4>
     <div>
-<!--       <div class="top">
-        <ol class="steps">
-          <li class="step-active">
-            <div class="step-line l_1"></div>
-            <div class="step-content">
-              <span class="step-num">1</span>
-              <div class='msg'>填写参数</div>
-            </div>
-          </li>
-          <li class="step-active l_2">
-            <div class="step-line"></div>
-            <div class="step-content">
-              <span class="step-num">2</span>
-              <div class='msg'>提交测试</div>
-            </div>
-          </li>
-          <li class="step-active l_3">
-            <div class="step-line"></div>
-            <div class="step-content">
-              <span class="step-num">3</span>
-              <div class="step-text msg">等待处理</div>
-            </div>
-          </li>
-          <li class="step-active">
-            <div class="step-line  l_4"></div>
-            <div class="step-content">
-              <span class="step-num">4</span>
-              <div class="step-text msg">查看报告</div>
-            </div>
-          </li>
-        </ol>
-      </div> -->
       <el-steps :active="4" align-center class='line_1'>
-  <el-step title="填写参数"> </el-step>
-  <el-step title="提交测试"> </el-step>
-  <el-step title="等待处理"> </el-step>
-  <el-step title="查看报告"> </el-step>
-</el-steps>
+        <el-step title="填写参数"> </el-step>
+        <el-step title="提交测试"> </el-step>
+        <el-step title="等待处理"> </el-step>
+        <el-step title="查看报告"> </el-step>
+      </el-steps>
       <div class="body">
         <div @click='toCom'><img src="@/assets/img/1.svg" alt="">
           <div>计算能力</div>
@@ -55,24 +23,54 @@
   </div>
 </template>
 <script>
+  import store from '@/store'
+  import {getLogin} from '@/api/user'
 export default {
   name: 'Documentation',
   data() {
     return {
-
+canotClick:true,
     }
   },
+  mounted(){
+        getLogin().then(data => {
+        if (Object.keys(data.data).length) {
+          
+          this.canotClick = false
+        } else {
+          // store.dispatch('user/setShow', true)
+          this.canotClick = true
+        }
+      });
+  },
+
   methods: {
     toCom() {
+      if(this.canotClick){
+        store.dispatch('user/setShow', true)
+
+        return false
+      }
       this.$router.push({ name: 'computing' })
     },
 
     toCc(){
+      if(this.canotClick){
+        store.dispatch('user/setShow', true)
+
+        return false
+      }
       this.$router.push({name:'block-test'})
     },
     tonNet(){
+      if(this.canotClick){
+        store.dispatch('user/setShow', true)
+
+        return false
+      }
       this.$router.push({name:'net-test'})
-    }
+    },
+
   }
 }
 

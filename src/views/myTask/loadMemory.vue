@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="chart">
-      <p>测试总分: {{ total }}</p>
+      <p>测试总分: {{ total}}</p>
       <p class="duibi til">测试对比</p>
       <bar-chart :chartData="BarChartData" />
     </div>
@@ -129,38 +129,20 @@ export default {
           count_data.score_4k.toFixed(4) * 1,
           count_data.total_4k_small_weight
         ];
-        // this.count_data = count_data;
-        // this.BarChartData.a_Data = [
-        //   (count_data.scpuFloat ).toFixed(4) * 1,
-        //   30
-        // ];
         this.BarChartData.b_Data = [
           count_data.score_64k.toFixed(4) * 1,
           count_data.total_64k_large_weight
         ];
-        // this.BarChartData.v_Data = [
-        //   (count_data.s_ram ).toFixed(4) * 1,
-        //   40
-        // ];
         this.total = count_data.score_4k + count_data.score_64k;
-        // this.cpu_int = data.data.test_result_list.filter(
-        //   v => v.metric == "cpu_int"
-        // );
-        // this.cpu_float = data.data.test_result_list.filter(
-        //   v => v.metric == "cpu_float"
-        // );
-        // this.cpu_s_ram = data.data.test_result_list.filter(
-        //   v => v.metric == "cpu_s_ram"
-        // );
       });
     }
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .loadcount {
   button {
-    position: fixed;
+    position: absolute;
     right: 20px;
   }
   text-align: center;

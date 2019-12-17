@@ -102,6 +102,7 @@ export const constantRoutes = [
     children: [
       {
         path: '',
+        requireAuth: true, // 配置此条，进入页面前判断是否需要登陆 
         component: () => import('@/views/myTask/index'),
         name: 'Guide',
         meta: { title: '我的', noCache: true }

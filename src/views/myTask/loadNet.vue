@@ -25,10 +25,10 @@
         </p>
       </div>
       <div>
- <!--        <p>
+        <!--        <p>
           <span>磁盘类型：</span>
           <span>{{count_data.product_type}}</span>
-        </p> -->
+        </p>-->
         <p>
           <span>报告来源：</span>
           <span>可信云 ( http://www.kexinyun.org) www.kexinyun.org )</span>
@@ -47,22 +47,18 @@
           <tr>
             <th>测试项</th>
             <th>值</th>
-          
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>带宽</td>
             <td>{{count_data.bandwidth}}</td>
-           
           </tr>
-         
+
           <tr>
-            <td >延迟</td>
+            <td>延迟</td>
             <td>{{count_data.latency}}</td>
-          
           </tr>
-         
         </tbody>
       </table>
     </div>
@@ -114,19 +110,13 @@ export default {
       vm_test_coun(param).then(data => {
         let count_data = data.data;
         this.count_data = count_data;
-        this.BarChartData.a_Data = [
-          count_data.bandwidth.toFixed(4) * 1,
-          50
-        ];
+        this.BarChartData.a_Data = [count_data.bandwidth.toFixed(4) * 1, 50];
         // this.count_data = count_data;
         // this.BarChartData.a_Data = [
         //   (count_data.scpuFloat ).toFixed(4) * 1,
         //   30
         // ];
-        this.BarChartData.b_Data = [
-          count_data.latency.toFixed(4) * 1,
-          50
-        ];
+        this.BarChartData.b_Data = [count_data.latency.toFixed(4) * 1, 50];
         // this.BarChartData.v_Data = [
         //   (count_data.s_ram ).toFixed(4) * 1,
         //   40
@@ -146,10 +136,10 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .loadcount {
   button {
-    position: fixed;
+    position: absolute;
     right: 20px;
   }
   text-align: center;

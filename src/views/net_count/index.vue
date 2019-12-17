@@ -138,35 +138,66 @@ export default {
     margin: auto;
     width: 100%;
     background: #fff;
-
-    > .content {
-      width: 45%;
-      margin-left: 20%;
+@media screen and (max-width: 1224px) {
+     >.content {
+      width: 68%;
+      margin-left: 0px;
       padding: 10px;
-      .demo-ruleForm {
+            .demo-ruleForm{
         position: relative;
-        .meg {
-          position: absolute;
+        .meg{
+            position: absolute;
             top: 0px;
             left: 101%;
             margin: 10px;
-            min-width: 313px;
+            width:45%;
             color:#38448e;
             font-size:14px;
             word-wrap: break-word;
             word-break: break-all;
         }
-        .til_1 {
-          top: 200px;
+        .til_1{
+          top:200px;
+          }
+          .til_2{
+          top:280px;
         }
-        .til_2 {
-          top: 280px;
-        }
-        .til_3 {
-          top: 350px;
+        .til_3{
+           top:350px;
         }
       }
     }
+ }
+ @media screen and (min-width: 1224px) {
+    >.content {
+      width: 50%;
+      margin-left: 20%;
+      padding: 10px;
+            .demo-ruleForm{
+        position: relative;
+        .meg{
+            position: absolute;
+            top: 0px;
+            left: 101%;
+            margin: 10px;
+            width:45%;
+            color:#38448e;
+            font-size:14px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        .til_1{
+          top:200px;
+          }
+          .til_2{
+          top:280px;
+        }
+        .til_3{
+           top:350px;
+        }
+      }
+    }
+ }
   }
     .test{
         text-align: center;

@@ -41,7 +41,7 @@ Net,
         if(this.activeName == 'message'){
           this.$router.push({ name: 'computing' })
         } else if(this.activeName == 'memory'){
-this.$router.push({name:'block-test'})
+            this.$router.push({name:'block-test'})
         }else{
          this.$router.push({name:'net-test'})
         }

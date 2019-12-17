@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <el-dialog title="用户登录" :visible="show" :show-close="false">
+    <el-dialog :title="name_login" :visible="show" :show-close="false">
       <div class="login">
         <el-form ref="form" :model="form" :rules="rules" class="form" v-if="hasPassword">
           <el-form-item prop="username" label="用户名">
@@ -14,7 +14,7 @@
           <el-form-item prop="seccode" class="inputbar" label="验证码">
             <el-input class="log-input" v-model="form.seccode" placeholder="验证码" prefix-icon="icon-login_auth" @keydown.enter.native="login('form')">
             </el-input>
-            <span class="checkCode" @click="createCode">{{ checkCode}}</span>
+            <span class="checkCode" @click="createCode" style="max-height: 36px">{{ checkCode}}</span>
           </el-form-item>
           <el-form-item class='btn'>
             <el-button @click="dialogVisible">取 消</el-button>
@@ -38,7 +38,7 @@
           <el-form-item prop="seccode" class="inputbar" label="验证码">
             <el-input class="log-input" v-model="form_1.seccode" placeholder="验证码" prefix-icon="icon-login_auth" @keydown.enter.native="login('form')">
             </el-input>
-            <span class="checkCode" @click="createCode">{{ checkCode}}</span>
+            <span class="checkCode" @click="createCode" style="max-height: 36px">{{ checkCode}}</span>
           </el-form-item>
           <el-form-item class='btn'>
             <el-button @click="dialogVisible">取 消</el-button>
@@ -54,7 +54,8 @@
 <script>
 import { login_1,setPassword_api } from '@/api/user'
 import Cookies from 'js-cookie'
-import { Base64 } from 'js-base64';
+import { Base64 } from 'js-base64'
+import store from '@/store'
 export default {
   data() {
         var validatePass = (rule, value, callback) => {
@@ -106,6 +107,7 @@ export default {
         confirm_password:"",
         seccode: ""
       },
+      name_login:'用户登录',
       checkCode: '',
       rules: {
         username: [{ required: true, validator: validateEmail, trigger: 'blur' }],
@@ -132,7 +134,8 @@ export default {
   },
   methods: {
     forgetPassword(){
-this.hasPassword = false
+   this.hasPassword = false
+   this.name_login = '重置密码'
     },
     dialogVisible() {
       try {
@@ -143,6 +146,9 @@ this.hasPassword = false
       this.loading = false
       this.hasPassword = true
       this.$emit('changeShow', false)
+      this.name_login = '用户登录'
+      store.dispatch('user/setShow', false)
+      this.$router.push('/dashboard')
 
     },
     createCode() {
@@ -176,6 +182,7 @@ this.hasPassword = false
         let name = data.username
         this.$emit('setName', name)
         this.dialogVisible()
+        this.$router.push('/dashboard')
       }).catch(() => {
         this.loading = false
       })
@@ -221,7 +228,7 @@ form{
   position:relative;
   .setPass{
     position: absolute;
-    top: 70px;
+    top: 35%;
     left:65%;
     cursor: pointer;
     color:#8492fd,

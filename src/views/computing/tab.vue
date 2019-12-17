@@ -13,12 +13,12 @@
             </div>
             <div class="arrow_2">
               <p>
-                <span>供应商：{{ data.service_provider_name }}</span>
-                <span style="margin-left:20px">IP地址：{{ data.ip_address }}</span>
+                <span class="arrow_3">供应商：{{ data.service_provider_name }}</span>
+                <span style="margin-left:20px" class="arrow_3">IP地址：{{ data.ip_address }}</span>
               </p>
               <p>
-                <span>密码：{{ data.password }}</span>
-                <span style="margin-left:20px">用户名：{{ data.username }}</span>
+                <span class="arrow_3">密码：{{ data.password }}</span>
+                <span style="margin-left:20px" class="arrow_3">用户名：{{ data.username }}</span>
               </p>
             </div>
           </div>
@@ -99,18 +99,6 @@ export default {
       }
     };
   },
-  // watch: {
-  //   "ruleForm.ip": function(curVal, oldVal) {
-  //     if (!curVal) {
-  //       this.ruleForm.ip = "";
-  //       return false;
-  //     }
-  //     // 实时把非数字的输入过滤掉
-  //     this.ruleForm.ip = curVal.match(/\d/gi)
-  //       ? curVal.match(/\d/gi).join("")
-  //       : "";
-  //   }
-  // },
   created() {
     this.getList();
   },
@@ -126,6 +114,7 @@ export default {
                 type: "success"
               });
               this.activeName = "message";
+              this.$emit("activeName_change", false);
               this.getList();
             }
           });
@@ -162,7 +151,7 @@ export default {
       });
     },
     handleClick(tab, event) {
-      if (this.activeName == "createArrow") {
+      if (this.activeName === "createArrow") {
         this.$emit("activeName_change", true);
       } else {
         this.$emit("activeName_change", false);
@@ -191,6 +180,7 @@ export default {
 .arrow_1 {
   margin-right: 15px;
 }
+
 .arrow_header {
   width: 100%;
   height: 350px;
