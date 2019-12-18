@@ -139,7 +139,7 @@ export default {
     margin: auto;
     width: 100%;
     background: #fff;
-@media screen and (max-width: 1224px) {
+  @media screen and (max-width: 1224px) and (min-width: 982px) {
      >.content {
       width: 68%;
       margin-left: 0px;
@@ -169,36 +169,126 @@ export default {
       }
     }
  }
- @media screen and (min-width: 1224px) {
-    >.content {
-      width: 50%;
-      margin-left: 20%;
-      padding: 10px;
-            .demo-ruleForm{
-        position: relative;
-        .meg{
+    @media screen and (min-width: 1224px) {
+      > .content {
+        width: 50%;
+        margin-left: 20%;
+        padding: 10px;
+        .demo-ruleForm {
+          position: relative;
+          .meg {
             position: absolute;
             top: 0px;
             left: 101%;
             margin: 10px;
-            width:45%;
-            color:#38448e;
-            font-size:14px;
+            width: 45%;
+            color: #38448e;
+            font-size: 14px;
             word-wrap: break-word;
             word-break: break-all;
-        }
-        .til_1{
-          top:200px;
           }
-          .til_2{
-          top:280px;
-        }
-        .til_3{
-           top:350px;
+          .til_1 {
+            top: 200px;
+          }
+          .til_2 {
+            top: 280px;
+          }
+          .til_3 {
+            top: 350px;
+          }
         }
       }
     }
- }
+        @media screen and (max-width: 982px) and (min-width: 730px) {
+      > .content {
+        width: 65%;
+        margin-left: 3%;
+        padding: 10px;
+        .demo-ruleForm {
+          position: relative;
+          .meg {
+            position: absolute;
+            top: 0px;
+            left: 101%;
+            margin: 10px;
+            width: 45%;
+            color: #38448e;
+            font-size: 14px;
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+          .til_1 {
+            top: 200px;
+          }
+          .til_2 {
+            top: 280px;
+          }
+          .til_3 {
+            top: 350px;
+          }
+        }
+      }
+    }
+        @media screen and (max-width: 730px) and (min-width: 544px) {
+      > .content {
+        width: 65%;
+        margin-left: 3%;
+        padding: 10px;
+        .demo-ruleForm {
+          position: relative;
+          .meg {
+            position: absolute;
+            top: 0px;
+            left: 101%;
+            margin: 10px;
+            width: 45%;
+            color: #38448e;
+            font-size: 14px;
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+          .til_1 {
+            top: 200px;
+          }
+          .til_2 {
+            top: 280px;
+          }
+          .til_3 {
+            top: 350px;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 544px) {
+      > .content {
+        width: 75%;
+        margin-left: 3%;
+        padding: 10px;
+        .demo-ruleForm {
+          position: relative;
+          .meg {
+            position: absolute;
+            top: 0px;
+            left: 101%;
+            margin: 10px;
+            width: 28%;
+            color: #38448e;
+            font-size: 12px;
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+          .til_1 {
+            top: 260px;
+          }
+          .til_2 {
+            top: 475px;
+          }
+          .til_3 {
+            top: 600px;
+          }
+        }
+      }
+    }
   }
     .test{
         text-align: center;
@@ -207,6 +297,24 @@ export default {
     span{
       color: red;
     }
+  }
+}
+@media screen and (max-width: 982px) and (min-width: 730px) {
+  .computing {
+    margin: 50px;
+  }
+}
+@media screen and (max-width: 730px) and (min-width: 544px) {
+  .computing {
+    margin: 50px;
+    .el-form-item__content {
+      margin-left: 10px !important;
+    }
+  }
+}
+@media screen and (max-width: 544px) {
+  .computing {
+    margin: 20px;
   }
 }
 </style>

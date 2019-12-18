@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div  class="main-container">
-      <div >
+    <div class="main-container">
+      <div>
         <navbar />
         <!-- <sidebar class="sidebar-container" /> -->
         <!-- <tags-view v-if="needTagsView" /> -->
@@ -9,19 +9,25 @@
       <app-main />
       <!--       <right-panel v-if="showSettings">
         <settings />
-      </right-panel> -->
+      </right-panel>-->
       <el-footer style="padding:0px">
         <div class="foot_1">
-          <img src="@/assets/img/bg6.png" alt="">
+          <img src="@/assets/img/bg6.png" alt />
           <div>
             <p>数据中心联盟版权所有 &copy; 2015京ICP备09113703号-1</p>
             <p>
-              <a href="#">关于我们</a><b>|</b>
-              <a href="#">联系我们</a><b>|</b>
-              <a href="#">云服务库</a><b>|</b>
-              <a href="#">测评工具</a><b>|</b>
-              <a href="#">云保险</a><b>|</b>
-              <a href="#">可信云评估</a><b>|</b>
+              <a href="#">关于我们</a>
+              <b>|</b>
+              <a href="#">联系我们</a>
+              <b>|</b>
+              <a href="#">云服务库</a>
+              <b>|</b>
+              <a href="#">测评工具</a>
+              <b>|</b>
+              <a href="#">云保险</a>
+              <b>|</b>
+              <a href="#">可信云评估</a>
+              <b>|</b>
               <a href="#">意见反馈</a>
             </p>
           </div>
@@ -31,26 +37,25 @@
   </div>
 </template>
 <script>
-import RightPanel from '@/components/RightPanel'
-import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
-import { mapState } from 'vuex'
-import bg6 from '@/assets/img/bg6.png'
+import RightPanel from "@/components/RightPanel";
+import { AppMain, Navbar, Sidebar } from "./components";
+import ResizeMixin from "./mixin/ResizeHandler";
+import { mapState } from "vuex";
+import bg6 from "@/assets/img/bg6.png";
 
 export default {
-  name: 'Layout',
+  name: "Layout",
   data() {
     return {
       img_5: bg6
-    }
+    };
   },
   components: {
     AppMain,
     Navbar,
     RightPanel,
-    Settings,
-    Sidebar,
-    TagsView
+
+    Sidebar
   },
   mixins: [ResizeMixin],
   computed: {
@@ -65,17 +70,16 @@ export default {
       return {
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
+        mobile: this.device === "mobile"
+      };
     }
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
     }
   }
-}
-
+};
 </script>
 <style lang="scss" scoped>
 @import "~@/styles/mixin.scss";
@@ -112,23 +116,25 @@ export default {
   transition: width 0.28s;
 }
 
-
 .mobile .fixed-header {
   width: 100%;
 }
 
 .foot_1 {
-  background-image: linear-gradient(to right, rgba(132, 146, 253, 0.2), rgba(93, 181, 252, 0.2));
+  background-image: linear-gradient(
+    to right,
+    rgba(132, 146, 253, 0.2),
+    rgba(93, 181, 252, 0.2)
+  );
   font-size: 14px;
 
-  >img {
+  > img {
     width: 100%;
   }
 
-  >div {
+  > div {
     color: #fff;
     text-align: center;
-
     p {
       margin-top: -60px;
     }
@@ -139,5 +145,16 @@ export default {
     cursor: pointer;
   }
 }
-
+@media screen and (max-width: 768px) {
+  .foot_1 {
+    > div {
+      p:nth-child(1) {
+        margin-top: -28px;
+      }
+      p:nth-child(2) {
+        margin-top: -75px;
+      }
+    }
+  }
+}
 </style>

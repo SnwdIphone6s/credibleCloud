@@ -54,7 +54,6 @@ Net,
 <style lang="scss" scoped>
 .computing {
       margin: 50px 160px;
-
   h4 {
     display: block;
     font-size: 24px;
@@ -67,5 +66,28 @@ Net,
   position:relative;
 }
 }
+@media screen and (max-width: 1240px) and (min-width: 1024px) {
+.computing {
+      margin: 50px 80px;
 
+}
+  }
+  @media screen and (max-width: 1024px) and (min-width: 870px) {
+.computing {
+      margin: 50px 40px;
+
+}
+  }
+    @media screen and (max-width: 870px) and (min-width: 740px) {
+.computing {
+      margin: 50px 20px;
+
+}
+  }
+      @media screen and (max-width: 544px) {
+.computing {
+      margin: 50px 5px;
+
+}
+  }
 </style>

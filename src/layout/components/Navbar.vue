@@ -49,7 +49,7 @@ export default {
     return {
       msg: false,
       userName: "",
-      name:''
+      name: ""
     };
   },
   created() {
@@ -66,7 +66,7 @@ export default {
     //       Cookies.set('noLogin',true)
     //     } else {
     //       Cookies.set('noLogin',false)
-         
+
     //     }
     // })
   },
@@ -124,8 +124,8 @@ export default {
     getLogin_1() {
       getLogin().then(data => {
         if (Object.keys(data.data).length) {
-           let name = data.data.username
-          this.name = name
+          let name = data.data.username;
+          this.name = name;
           this.userName = "true";
         } else {
           this.userName = "";
@@ -136,8 +136,8 @@ export default {
     changeShow(s) {
       this.msg = false;
     },
-    setName(n){
-      this.name = n
+    setName(n) {
+      this.name = n;
     },
     toggleSideBar() {
       this.$store.dispatch("app/toggleSideBar");
@@ -150,11 +150,9 @@ export default {
     },
 
     async setLogout() {
-      await this.$store.dispatch("user/logout").then(data=>{
-        this.$router.push('/dashboard')
+      await this.$store.dispatch("user/logout").then(data => {
+        this.$router.push("/dashboard");
         // this.$router.go(0)
-          
-
       });
     },
     GetRequest() {
@@ -173,7 +171,6 @@ export default {
       setEmail_api(param).then(data => {
         if (data.code == "success") {
           this.getLogin_1();
-
         }
       });
     }
@@ -185,22 +182,55 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.navbar {
-  display: flex;
-  align-items: center;
-  background-image: linear-gradient(
-    to right,
-    rgba(132, 146, 253, 1),
-    rgba(93, 181, 252, 1)
-  );
-  height: 50px;
-  overflow: hidden;
-  position: relative;
-  justify-content: space-around;
+@media screen and (min-width: 544px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(
+      to right,
+      rgba(132, 146, 253, 1),
+      rgba(93, 181, 252, 1)
+    );
 
-  .right-menu {
-    color: #fff;
-    cursor: pointer;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-around;
+    img {
+      width: 100%;
+    }
+    .right-menu {
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .navbar {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(
+      to right,
+      rgba(132, 146, 253, 1),
+      rgba(93, 181, 252, 1)
+    );
+
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-around;
+    img {
+      width: 100%;
+    }
+    > span {
+      flex: 0 1 30%;
+    }
+    .right-menu {
+      color: #fff;
+      cursor: pointer;
+    }
   }
 }
 </style>

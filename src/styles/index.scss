@@ -199,12 +199,18 @@ aside {
 }
 
 .menu-wrapper {
-  float: left;
+  .el-menu--horizontal {
+    display: flex;
+  }
+}
+.el-menu.el-menu--horizontal {
+  display: flex;
 }
 
 .el-menu-item.is-active.submenu-title-noDropdown {
   background-color: #fff !important;
   font-weight: bold;
+  height: 54px;
 }
 
 .el-menu-item.submenu-title-noDropdown {
@@ -269,7 +275,7 @@ aside {
       > label {
         flex: 0 1 15%;
         text-align: left;
-        min-width:67px;
+        min-width: 67px;
       }
       > div {
         flex: 0 1 50%;
@@ -319,22 +325,94 @@ aside {
     }
   }
 }
-.el-step__icon.is-text{
-      background: #8492fd;
-    color: #fff;
-    font-size: 16px;
-    border: #8492fd;
+.el-step__icon.is-text {
+  background: #8492fd;
+  color: #fff;
+  font-size: 16px;
+  border: #8492fd;
 }
-.el-step__icon{
-  width:40px;
-  height:40px;
+.el-step__icon {
+  width: 40px;
+  height: 40px;
 }
-.el-step.is-horizontal .el-step__line{
-  top:20px;
+.el-step.is-horizontal .el-step__line {
+  top: 20px;
 }
-.el-form-item--medium .el-form-item__label{
-  text-align:left;
+.el-form-item--medium .el-form-item__label {
+  text-align: left;
 }
-.el-pagination{
-  padding-top:50px;
+.el-pagination {
+  padding-top: 50px;
+}
+@media screen and (max-width: 544px) {
+  .el-menu-item.submenu-title-noDropdown {
+    padding: 0 3px;
+  }
+  .login {
+    .el-dialog {
+      width: 90%;
+    }
+    form {
+      > div {
+        margin-left: 0px;
+        > label {
+          flex: 0 1 25%;
+        }
+      }
+    }
+  }
+  .computing {
+    .el-form-item__content {
+      margin-left: 10px !important;
+      margin-top: 40px;
+    }
+    .el-form-item__label {
+      margin-top: 0px;
+    }
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 544px) {
+  .el-menu-item.submenu-title-noDropdown {
+    padding: 0 3px;
+  }
+  .login {
+    .el-dialog {
+      width: 75%;
+    }
+    form {
+      > div {
+        margin-left: 0px;
+        > label {
+          flex: 0 1 25%;
+        }
+      }
+    }
+  }
+  .computing {
+    .el-form-item__content {
+      margin-left: 10px !important;
+      margin-top: 40px;
+    }
+    .el-form-item__label {
+      margin-top: -10px;
+    }
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .el-menu-item.submenu-title-noDropdown {
+    padding: 0 3px;
+  }
+  .login {
+    .el-dialog {
+      width: 55%;
+    }
+    form {
+      > div {
+        margin-left: 30px;
+        > label {
+          flex: 0 1 25%;
+        }
+      }
+    }
+  }
 }

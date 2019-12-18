@@ -229,9 +229,33 @@ form{
   .setPass{
     position: absolute;
     top: 35%;
-    left:65%;
+    left:70%;
     cursor: pointer;
     color:#8492fd,
   }
 }
+@media screen and (max-width: 544px) {
+form{
+  position:relative;
+  .setPass{
+    left:80%;
+  }
+}
+}
+@media screen and (max-width: 768px) and (min-width: 544px) {
+form{
+  position:relative;
+  .setPass{
+    left:78%;
+  }
+}
+  }
+  @media screen and (max-width: 1024px) and (min-width: 768px) {
+form{
+  position:relative;
+  .setPass{
+    left:78%;
+  }
+}
+  }
 </style>

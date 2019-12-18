@@ -190,7 +190,6 @@ canotClick:true,
     margin-top: 30px;
     display: flex;
     justify-content: center;
-
     >div {
       text-align: center;
       min-height: 400px;
@@ -224,4 +223,92 @@ canotClick:true,
   }
 }
 
+
+@media screen and (max-width: 544px) {
+  .documentation-container {
+      margin:50px 20px;
+      .body {
+      >div {
+      margin: 0 14px;
+          min-height: 0px;
+      >img{
+        height: 25%;
+        margin-top: 25px;
+        width: 75%;
+      }
+      >div{
+        font-size: 14px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
+}
+@media screen and (max-width: 768px) and (min-width: 544px) {
+   .documentation-container {
+      margin:50px 20px;
+      margin-top:40px;
+      .body {
+      >div {
+      margin: 0 14px;
+          min-height: 0px;
+      >img{
+        height: 25%;
+        margin-top: 45px;
+        width: 75%;
+      }
+      >div{
+        font-size: 14px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+      }
+    }
+  }
+}
+}
+@media screen and (max-width: 985px) and (min-width: 768px) {
+    .documentation-container {
+      margin:50px 20px;
+      margin-top:40px;
+      .body {
+      >div {
+      margin: 0 14px;
+          min-height: 0px;
+      >img{
+        height: 25%;
+        margin-top: 45px;
+        width: 75%;
+      }
+      >div{
+        font-size: 14px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+      }
+    }
+  }
+}
+}
+@media screen and (max-width: 1300px) and (min-width: 985px) {
+     .documentation-container {
+      margin:50px 20px;
+      margin-top:40px;
+      .body {
+      >div {
+      margin: 0 20px;
+          min-height: 0px;
+      >img{
+        height: 25%;
+        margin-top: 60px;
+        width: 75%;
+      }
+      >div{
+        font-size: 18px;
+        margin-top: 60px;
+        margin-bottom: 45px;
+      }
+    }
+  }
+}
+}
 </style>

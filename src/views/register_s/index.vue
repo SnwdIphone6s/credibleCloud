@@ -199,5 +199,38 @@ export default {
     }
   }
 }
-
+@media screen and (max-width: 1330px) and (min-width: 768px) {
+  .computing {
+   
+  >.body {
+    >.content {
+    width:66%
+    }
+  }
+}
+}
+@media screen and (max-width: 768px) and (min-width: 544px) {
+  .computing {
+    margin: 50px 45px;
+  >.body {
+    >.content {
+    width:66%
+    }
+  }
+}
+}
+@media screen and (max-width: 544px)  {
+  .computing {
+    margin: 50px 45px;
+  >.body {
+    >.content {
+    width:93%;
+         button {
+        
+        width: 65%;
+      }
+    }
+  }
+}
+}
 </style>
