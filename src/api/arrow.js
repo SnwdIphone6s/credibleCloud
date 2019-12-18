@@ -14,22 +14,22 @@ export function facilitatorList(query) {
     params: query
   })
 }
-export function setComputing(data){
-    return request({
+export function setComputing(data) {
+  return request({
     url: 'vm/test_vm',
     method: 'post',
     data
   })
 }
-export function setCount(data){
-    return request({
+export function setCount(data) {
+  return request({
     url: 'vm/test_storage',
     method: 'post',
     data
   })
 }
-export function setNet(data){
-    return request({
+export function setNet(data) {
+  return request({
     url: 'vm/test_net',
     method: 'post',
     data

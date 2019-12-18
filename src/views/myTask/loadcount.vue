@@ -1,8 +1,8 @@
 <template>
-  <div class="loadcount" id="pdfDom">
+  <div id="pdfDom" class="loadcount">
     <el-button type="primary" round @click="getPdf('UCloud性能测试')">下载为PDF</el-button>
-    <div class="header">{{name}}: 云主机众测报告</div>
-    <div class="line"></div>
+    <div class="header">{{ name }}: 云主机众测报告</div>
+    <div class="line" />
     <div class="body">
       <div class="name">
         <p>
@@ -29,7 +29,7 @@
           <span>配置参数：</span>
           <span>
             CUP:{{ count_data.cpu_core_num }}核 &nbsp;内存:{{
-            count_data.ram_num
+              count_data.ram_num
             }}M
           </span>
         </p>
@@ -42,7 +42,7 @@
     <div class="chart">
       <p>测试总分: {{ total }}</p>
       <p class="duibi til">测试对比</p>
-      <bar-chart :chartData="BarChartData" />
+      <bar-chart :chart-data="BarChartData" />
     </div>
     <div class="detailData">
       <p class="til">详细数值</p>
@@ -65,7 +65,7 @@
             <td>30</td>
             <td>{{ (count_data.scpuFloat * 0.3).toFixed(2) }}</td>
           </tr>
-          <tr class="speal" v-for="(item, index) in cpu_float">
+          <tr v-for="(item, index) in cpu_float" class="speal">
             <td>{{ item.tool }}</td>
             <td>{{ item.standard }}</td>
             <td>{{ item.result }}</td>
@@ -75,7 +75,7 @@
             <td>30</td>
             <td>{{ (count_data.scpuInt * 0.3).toFixed(2) }}</td>
           </tr>
-          <tr class="speal" v-for="(item, index) in cpu_int">
+          <tr v-for="(item, index) in cpu_int" class="speal">
             <td>{{ item.tool }}</td>
             <td>{{ item.standard }}</td>
             <td>{{ item.result }}</td>
@@ -86,7 +86,7 @@
             <td>40</td>
             <td>{{ (count_data.s_ram * 0.3).toFixed(2) }}</td>
           </tr>
-          <tr class="speal" v-for="(item, index) in cpu_s_ram">
+          <tr v-for="(item, index) in cpu_s_ram" class="speal">
             <td>{{ item.tool }}</td>
             <td>{{ item.standard }}</td>
             <td>{{ item.result }}</td>
@@ -97,9 +97,9 @@
   </div>
 </template>
 <script>
-import Cookies from "js-cookie";
-import { vm_test_coun } from "@/api/pdf";
-import BarChart from "./BarChart";
+import Cookies from 'js-cookie'
+import { vm_test_coun } from '@/api/pdf'
+import BarChart from './BarChart'
 export default {
   components: {
     BarChart
@@ -107,8 +107,8 @@ export default {
   data() {
     return {
       count_data: {},
-      total: "",
-      name: "",
+      total: '',
+      name: '',
       cpu_int: [],
       cpu_float: [],
       cpu_s_ram: [],
@@ -116,58 +116,58 @@ export default {
         a_Data: [],
         b_Data: [],
         v_Data: [],
-        name: ["CPU浮点", "CPU整形", "浮点"]
+        name: ['CPU浮点', 'CPU整形', '浮点']
       }
-    };
+    }
   },
   created() {
     // let count_data_1 = Cookies.get('count')
-    let name = Cookies.get("username");
+    const name = Cookies.get('username')
     // this.count_data = JSON.parse(count_data_1)
-    this.name = name;
-    this.testId = this.$route.query.testId;
+    this.name = name
+    this.testId = this.$route.query.testId
     // console.log(this.count_data)
-    this.getList();
+    this.getList()
   },
   mounted() {},
   methods: {
     getList() {
-      let param = {
+      const param = {
         testId: this.testId,
-        type: "host"
-      };
+        type: 'host'
+      }
       vm_test_coun(param).then(data => {
-        let count_data = data.data.test_vm;
-        this.count_data = count_data;
+        const count_data = data.data.test_vm
+        this.count_data = count_data
         this.BarChartData.a_Data = [
           (count_data.scpuFloat * 0.3).toFixed(4) * 1,
           30
-        ];
+        ]
         this.BarChartData.b_Data = [
           (count_data.scpuInt * 0.3).toFixed(4) * 1,
           30
-        ];
+        ]
         this.BarChartData.v_Data = [
           (count_data.s_ram * 0.4).toFixed(4) * 1,
           40
-        ];
+        ]
         this.total =
           count_data.scpuFloat * 0.3 +
           count_data.scpuInt * 0.3 +
-          count_data.s_ram * 0.4;
+          count_data.s_ram * 0.4
         this.cpu_int = data.data.test_result_list.filter(
-          v => v.metric == "cpu_int"
-        );
+          v => v.metric == 'cpu_int'
+        )
         this.cpu_float = data.data.test_result_list.filter(
-          v => v.metric == "cpu_float"
-        );
+          v => v.metric == 'cpu_float'
+        )
         this.cpu_s_ram = data.data.test_result_list.filter(
-          v => v.metric == "cpu_s_ram"
-        );
-      });
+          v => v.metric == 'cpu_s_ram'
+        )
+      })
     }
   }
-};
+}
 </script>
 <style lang="scss" >
 .loadcount {

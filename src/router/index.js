@@ -102,7 +102,7 @@ export const constantRoutes = [
     children: [
       {
         path: '',
-        requireAuth: true, // 配置此条，进入页面前判断是否需要登陆 
+        requireAuth: true, // 配置此条，进入页面前判断是否需要登陆
         component: () => import('@/views/myTask/index'),
         name: 'Guide',
         meta: { title: '我的', noCache: true }
@@ -149,7 +149,7 @@ export const constantRoutes = [
       }
     ]
   },
-    {
+  {
     path: '/CloudBenchMark/net-test',
     component: Layout,
     children: [
@@ -175,7 +175,7 @@ export const constantRoutes = [
       }
     ]
   },
-    {
+  {
     path: '/download',
     component: Layout,
     children: [
@@ -188,7 +188,7 @@ export const constantRoutes = [
       }
     ]
   },
-      {
+  {
     path: '/download_momory',
     component: Layout,
     children: [
@@ -201,7 +201,7 @@ export const constantRoutes = [
       }
     ]
   },
-        {
+  {
     path: '/download_net',
     component: Layout,
     children: [
@@ -213,7 +213,7 @@ export const constantRoutes = [
         meta: { title: 'register', affix: true }
       }
     ]
-  },
+  }
 ]
 
 /**

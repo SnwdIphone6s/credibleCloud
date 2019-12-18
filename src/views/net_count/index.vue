@@ -4,19 +4,19 @@
     <div class="body">
       <div class="content">
         <el-form
+          ref="ruleForm"
           :model="ruleForm"
           :rules="rules"
-          ref="ruleForm"
           label-width="100px"
           class="demo-ruleForm"
         >
           <el-form-item label="任务名称" prop="name">
-            <el-input v-model="ruleForm.name"></el-input>
+            <el-input v-model="ruleForm.name" />
           </el-form-item>
           <el-form-item label="云主机信息" prop="name">
-            <Tab @setComputing_change="setComputing_change" @activeName_change="activeName_change"></Tab>
+            <Tab @setComputing_change="setComputing_change" @activeName_change="activeName_change" />
           </el-form-item>
-<!--           <el-form-item label="产品类型" prop="block_product_type">
+          <!--           <el-form-item label="产品类型" prop="block_product_type">
   <el-select v-model="ruleForm.block_product_type" placeholder="产品类型">
     <el-option label="普通盘" value="hdd"></el-option>
     <el-option label="SSD盘" value="ssd"></el-option>
@@ -29,9 +29,9 @@
             <el-button @click="resetForm('ruleForm')">取消</el-button>
             <el-button
               type="primary"
-              @click="submitForm('ruleForm')"
               :loading="loading"
               :disabled="disabled"
+              @click="submitForm('ruleForm')"
             >开始测试</el-button>
           </el-form-item>
           <p class="meg">任务名称将出现在任务列表</p>
@@ -45,8 +45,8 @@
   </div>
 </template>
 <script>
-import Tab from "../computing/tab.vue";
-import { setNet } from "@/api/arrow";
+import Tab from '../computing/tab.vue'
+import { setNet } from '@/api/arrow'
 export default {
   components: {
     Tab
@@ -55,71 +55,71 @@ export default {
     return {
       loading: false,
       disabled: false,
-      host_info_id: "",
+      host_info_id: '',
       ruleForm: {
-        name: "",
-        block_product_type: "",
-        block_dev_path: "/"
+        name: '',
+        block_product_type: '',
+        block_dev_path: '/'
       },
       rules: {
         name: [
-          { required: true, message: "请输入任务名称", trigger: "blur" },
+          { required: true, message: '请输入任务名称', trigger: 'blur' },
           {
             min: 4,
             max: 12,
-            message: "长度在 4 到 12 位字母/数字/汉字",
-            trigger: "blur"
+            message: '长度在 4 到 12 位字母/数字/汉字',
+            trigger: 'blur'
           }
         ],
         block_product_type: [
-          { required: true, message: "产品类型", trigger: "change" }
+          { required: true, message: '产品类型', trigger: 'change' }
         ],
         block_dev_path: [
-          { required: true, message: "请输入块存储路径", trigger: "blur" }
+          { required: true, message: '请输入块存储路径', trigger: 'blur' }
         ]
       }
-    };
+    }
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          let param = {
+          const param = {
             host_info_id: this.host_info_id,
             block_product_type: this.ruleForm.block_product_type,
             block_dev_path: this.ruleForm.block_dev_path,
             task_name: this.ruleForm.name
-          };
-          this.loading = true;
+          }
+          this.loading = true
           setNet(param).then(data => {
-            if (data.code == "success") {
+            if (data.code == 'success') {
               this.$message({
-                message: "添加成功",
-                type: "success"
-              });
-              this.loading = false;
-              this.resetForm(formName);
-              this.$router.push({name:'Guide'})
+                message: '添加成功',
+                type: 'success'
+              })
+              this.loading = false
+              this.resetForm(formName)
+              this.$router.push({ name: 'Guide' })
             }
-          });
+          })
         } else {
-          console.log("error submit!!");
-          this.loading = false;
-          return false;
+          console.log('error submit!!')
+          this.loading = false
+          return false
         }
-      });
+      })
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields()
     },
     setComputing_change(id) {
-      this.host_info_id = id;
+      this.host_info_id = id
     },
     activeName_change(show) {
-      this.disabled = show;
+      this.disabled = show
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .computing {

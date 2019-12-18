@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 export function login(data) {
   return new Promise((resolve, reject) => {
-    resolve({ code: 20000, data: { token: 'admin-token' } })
+    resolve({ code: 20000, data: { token: 'admin-token' }})
   })
 }
 export function getInfo(a) {

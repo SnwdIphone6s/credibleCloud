@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       currentRole: 'adminDashboard',
-      roles:['admin']
+      roles: ['admin']
     }
   },
   computed: {

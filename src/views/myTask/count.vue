@@ -1,16 +1,16 @@
 <template>
   <div>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="time_start" label="测试时间" width="180"></el-table-column>
+      <el-table-column prop="time_start" label="测试时间" width="180" />
       <el-table-column label="任务名称">
         <template slot-scope="scope">
-          <p>{{scope.row.test_name}}</p>
-          <p>任务ID：{{scope.row.id}}</p>
+          <p>{{ scope.row.test_name }}</p>
+          <p>任务ID：{{ scope.row.id }}</p>
         </template>
       </el-table-column>
-      <el-table-column prop="provider" label="提供商"></el-table-column>
-      <el-table-column prop="ip" label="IP地址"></el-table-column>
-      <el-table-column prop="status" label="测试进度"></el-table-column>
+      <el-table-column prop="provider" label="提供商" />
+      <el-table-column prop="ip" label="IP地址" />
+      <el-table-column prop="status" label="测试进度" />
       <!--       <el-table-column
   prop="result"
   label="结果">
@@ -19,9 +19,9 @@
         <template slot-scope="scope">
           <el-button
             v-if="scope.row.status == 100"
-            @click="gotoDetail(scope.row)"
             type="text"
             size="small"
+            @click="gotoDetail(scope.row)"
           >查看详情</el-button>
           <el-button v-else="scope.row.status == 100" disabled type="text" size="small">查看详情</el-button>
         </template>
@@ -30,61 +30,61 @@
     <el-pagination
       background
       :page-sizes="[5, 10, 20, 40]"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
       :current-page="currentPage"
       :page-size="pagesize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
-    ></el-pagination>
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    />
   </div>
 </template>
 <script>
-import { testInstance } from "@/api/myTask";
-import Cookies from "js-cookie";
+import { testInstance } from '@/api/myTask'
+import Cookies from 'js-cookie'
 export default {
   data() {
     return {
       tableData: [],
-      currentPage: 1, //初始页
+      currentPage: 1, // 初始页
       pagesize: 10, //    每页的数据
       total: 1
-    };
+    }
   },
   mounted() {
-    this.getList();
+    this.getList()
   },
   methods: {
     getList() {
-      let param = {
-        type: "host",
+      const param = {
+        type: 'host',
         page: this.currentPage,
         limit: this.pagesize
-      };
+      }
       testInstance(param).then(data => {
         if (data.data.length) {
-          this.tableData = data.data;
-          this.total = data.page.total_count;
+          this.tableData = data.data
+          this.total = data.page.total_count
         }
-      });
+      })
     },
     gotoDetail(v) {
-      let count = v;
-      this.$router.push({ path: "/download", query: { testId: v.id } });
+      const count = v
+      this.$router.push({ path: '/download', query: { testId: v.id }})
       // Cookies.set('count',count)
       // this.$router.push({ name: 'downloadComputingPower' })
     },
     // 初始页currentPage、初始每页数据数pagesize和数据data
     handleSizeChange: function(size) {
-      this.pagesize = size;
-      this.getList();
+      this.pagesize = size
+      this.getList()
     },
     handleCurrentChange: function(currentPage) {
-      this.currentPage = currentPage;
-      this.getList();
+      this.currentPage = currentPage
+      this.getList()
     }
   }
-};
+}
 </script>
 <style>
 </style>

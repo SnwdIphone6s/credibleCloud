@@ -53,7 +53,7 @@ service.interceptors.response.use(
         type: 'error',
         duration: 1000
       })
-        Cookies.set('show',true)
+      Cookies.set('show', true)
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
@@ -71,7 +71,7 @@ service.interceptors.response.use(
           })
         })
       }
-      Cookies.set('show',true)
+      Cookies.set('show', true)
       store.dispatch('user/setShow', true)
       return Promise.reject(new Error(res.message || 'Error'))
     } else {

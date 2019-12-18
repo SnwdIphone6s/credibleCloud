@@ -2,20 +2,20 @@
   <div class="documentation-container">
     <h4>性能测试</h4>
     <div>
-      <el-steps :active="4" align-center class='line_1'>
-        <el-step title="填写参数"> </el-step>
-        <el-step title="提交测试"> </el-step>
-        <el-step title="等待处理"> </el-step>
-        <el-step title="查看报告"> </el-step>
+      <el-steps :active="4" align-center class="line_1">
+        <el-step title="填写参数" />
+        <el-step title="提交测试" />
+        <el-step title="等待处理" />
+        <el-step title="查看报告" />
       </el-steps>
       <div class="body">
-        <div @click='toCom'><img src="@/assets/img/1.svg" alt="">
+        <div @click="toCom"><img src="@/assets/img/1.svg" alt="">
           <div>计算能力</div>
         </div>
-        <div  @click='toCc'><img src="@/assets/img/2.svg" alt="">
+        <div @click="toCc"><img src="@/assets/img/2.svg" alt="">
           <div>存储IO能力</div>
         </div>
-        <div @click='tonNet'><img src="@/assets/img/3.svg" alt="">
+        <div @click="tonNet"><img src="@/assets/img/3.svg" alt="">
           <div>网络IO能力</div>
         </div>
       </div>
@@ -23,30 +23,29 @@
   </div>
 </template>
 <script>
-  import store from '@/store'
-  import {getLogin} from '@/api/user'
+import store from '@/store'
+import { getLogin } from '@/api/user'
 export default {
   name: 'Documentation',
   data() {
     return {
-canotClick:true,
+      canotClick: true
     }
   },
-  mounted(){
-        getLogin().then(data => {
-        if (Object.keys(data.data).length) {
-          
-          this.canotClick = false
-        } else {
-          // store.dispatch('user/setShow', true)
-          this.canotClick = true
-        }
-      });
+  mounted() {
+    getLogin().then(data => {
+      if (Object.keys(data.data).length) {
+        this.canotClick = false
+      } else {
+        // store.dispatch('user/setShow', true)
+        this.canotClick = true
+      }
+    })
   },
 
   methods: {
     toCom() {
-      if(this.canotClick){
+      if (this.canotClick) {
         store.dispatch('user/setShow', true)
 
         return false
@@ -54,22 +53,22 @@ canotClick:true,
       this.$router.push({ name: 'computing' })
     },
 
-    toCc(){
-      if(this.canotClick){
+    toCc() {
+      if (this.canotClick) {
         store.dispatch('user/setShow', true)
 
         return false
       }
-      this.$router.push({name:'block-test'})
+      this.$router.push({ name: 'block-test' })
     },
-    tonNet(){
-      if(this.canotClick){
+    tonNet() {
+      if (this.canotClick) {
         store.dispatch('user/setShow', true)
 
         return false
       }
-      this.$router.push({name:'net-test'})
-    },
+      this.$router.push({ name: 'net-test' })
+    }
 
   }
 }
@@ -148,7 +147,7 @@ canotClick:true,
     width: 40%;
    }
   ol.steps .step-content {
-   
+
     top: 0;
     left: -20px;
     text-align: center;
@@ -222,7 +221,6 @@ canotClick:true,
     margin-bottom: 50px;
   }
 }
-
 
 @media screen and (max-width: 544px) {
   .documentation-container {

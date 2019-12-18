@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-tabs type="border-card" class="right" @tab-click="handleClick" v-model="activeName">
+    <el-tabs v-model="activeName" type="border-card" class="right" @tab-click="handleClick">
       <el-tab-pane label="从历史信息中选择" name="message">
         <div class="arrow_header">
           <div v-for="(data, index) in host_info_list" :key="index" class="arrow">
@@ -28,9 +28,9 @@
         <div class="header">
           <div>服务商将影响测试对比结果, 请如实填写</div>
           <el-form
+            ref="ruleForm"
             :model="ruleForm"
             :rules="rules"
-            ref="ruleForm"
             label-width="100px"
             class="demo-ruleForm"
           >
@@ -38,25 +38,25 @@
               <el-select v-model="ruleForm.provider" placeholder="请选择">
                 <el-option
                   v-for="(item,index) in allData"
+                  :key="item.id"
                   :label="item.name"
                   :value="item.id"
-                  :key="item.id"
-                ></el-option>
+                />
               </el-select>
             </el-form-item>
             <el-form-item label="IP地址" prop="ip">
-              <el-input v-model="ruleForm.ip"></el-input>
+              <el-input v-model="ruleForm.ip" />
             </el-form-item>
             <el-form-item label="用户名" prop="login_username">
-              <el-input v-model="ruleForm.login_username"></el-input>
+              <el-input v-model="ruleForm.login_username" />
             </el-form-item>
             <el-form-item label="认证信息" prop="login_password">
               <el-radio v-model="radio_1" label="0101_1">密码</el-radio>
-              <el-input v-model="ruleForm.login_password" type="password"></el-input>
+              <el-input v-model="ruleForm.login_password" type="password" />
             </el-form-item>
             <el-form-item label="定时任务" prop="radio">
-              <el-radio v-model="ruleForm.timed_task" :label=true>开启</el-radio>
-              <el-radio v-model="ruleForm.timed_task" :label=false>关闭</el-radio>
+              <el-radio v-model="ruleForm.timed_task" :label="true">开启</el-radio>
+              <el-radio v-model="ruleForm.timed_task" :label="false">关闭</el-radio>
             </el-form-item>
             <el-form-item>
               <el-button size="small" @click="resetForm('ruleForm')">取消</el-button>
@@ -69,96 +69,96 @@
   </div>
 </template>
 <script>
-import { facilitatorList, setArrow, setComputing } from "@/api/arrow";
+import { facilitatorList, setArrow, setComputing } from '@/api/arrow'
 export default {
   data() {
     return {
-      radio: "1",
-      radio_1: "0101_1",
-      activeName: "message",
+      radio: '1',
+      radio_1: '0101_1',
+      activeName: 'message',
       ruleForm: {
-        provider: "",
-        login_username: "root",
-        ip: "",
-        login_password: "",
+        provider: '',
+        login_username: 'root',
+        ip: '',
+        login_password: '',
         timed_task: false
       },
       allData: [],
       host_info_list: [],
       rules: {
         login_username: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
+          { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
         provider: [
-          { required: true, message: "请选择供应商", trigger: "change" }
+          { required: true, message: '请选择供应商', trigger: 'change' }
         ],
         login_password: [
-          { required: true, message: "请输入密码", trigger: "blur" }
+          { required: true, message: '请输入密码', trigger: 'blur' }
         ],
-        ip: [{ required: true, message: "请输入ip地址", trigger: "blur" }]
+        ip: [{ required: true, message: '请输入ip地址', trigger: 'blur' }]
       }
-    };
+    }
   },
   created() {
-    this.getList();
+    this.getList()
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          let data = this.ruleForm;
+          const data = this.ruleForm
           setArrow(data).then(data => {
-            if (data.code == "success") {
+            if (data.code == 'success') {
               this.$message({
-                message: "添加成功",
-                type: "success"
-              });
-              this.activeName = "message";
-              this.$emit("activeName_change", false);
-              this.getList();
+                message: '添加成功',
+                type: 'success'
+              })
+              this.activeName = 'message'
+              this.$emit('activeName_change', false)
+              this.getList()
             }
-          });
+          })
         } else {
-          console.log("error submit!!");
-          return false;
+          console.log('error submit!!')
+          return false
         }
-      });
+      })
     },
     changeCompu(v) {
-      this.$emit("setComputing_change", v);
+      this.$emit('setComputing_change', v)
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields()
     },
     getList() {
       facilitatorList().then(data => {
-        let allData = data.data.providers;
-        this.allData = allData;
-        let host_info_list = data.data.host_info_list;
+        const allData = data.data.providers
+        this.allData = allData
+        const host_info_list = data.data.host_info_list
         if (host_info_list) {
           allData.forEach(data_1 => {
             host_info_list.forEach(v => {
               if (v.service_provider == data_1.id) {
-                v.service_provider_name = data_1.name;
-                return v;
+                v.service_provider_name = data_1.name
+                return v
               }
-            });
-          });
-          this.host_info_list = host_info_list;
-          this.radio = host_info_list[0].id;
-          this.$emit("setComputing_change", host_info_list[0].id);
+            })
+          })
+          this.host_info_list = host_info_list
+          this.radio = host_info_list[0].id
+          this.$emit('setComputing_change', host_info_list[0].id)
         }
-      });
+      })
     },
     handleClick(tab, event) {
-      if (this.activeName === "createArrow") {
-        this.$emit("activeName_change", true);
+      if (this.activeName === 'createArrow') {
+        this.$emit('activeName_change', true)
       } else {
-        this.$emit("activeName_change", false);
+        this.$emit('activeName_change', false)
       }
     }
   }
-};
+}
 </script>
 <style>
 .arrow {

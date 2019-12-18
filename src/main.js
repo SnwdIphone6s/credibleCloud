@@ -18,7 +18,7 @@ import './permission' // permission control
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
-import htmlToPdf from './utils/htmlToPdf';
+import htmlToPdf from './utils/htmlToPdf'
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium' // set element-ui default size
 })
-Vue.use(htmlToPdf);
+Vue.use(htmlToPdf)
 // register global utility filters
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])

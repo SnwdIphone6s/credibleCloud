@@ -7,7 +7,7 @@ const state = {
   name: '',
   username: '',
   avatar: '',
-  show:'',
+  show: '',
   introduction: '',
   roles: [],
   dict: {}
@@ -64,7 +64,7 @@ const actions = {
           this.loading = false
           const { data } = response
           commit('SET_USERNAME', data.username)
-          Cookies.set('username',data.username)
+          Cookies.set('username', data.username)
           resolve(data)
         })
         .catch(error => {
@@ -75,7 +75,7 @@ const actions = {
   },
   setShow({ commit, state }, show) {
     return new Promise((resolve, reject) => {
-     commit('SHOW', show)
+      commit('SHOW', show)
     })
   },
   // 用户来源
@@ -121,7 +121,6 @@ const actions = {
           commit('SET_USERNAME', '')
           removeToken()
           removeUserName()
-    
 
           resolve()
         })

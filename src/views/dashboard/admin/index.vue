@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-editor-container">
-    <panel-group  />
+    <panel-group />
   </div>
 </template>
 <script>
@@ -10,13 +10,13 @@ export default {
   name: 'DashboardAdmin',
 
   components: {
-    PanelGroup,
+    PanelGroup
   },
   data() {
     return {
       img_5: bg6
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

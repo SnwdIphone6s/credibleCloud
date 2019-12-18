@@ -4,7 +4,7 @@
       <div class="til">
         <div>
           <span>全面</span>
-          <span class="marker"></span>
+          <span class="marker" />
           <span>分秒必争</span>
         </div>
         <div>
@@ -21,10 +21,10 @@
           class="foot"
         >In order to set sail your business or career, we helphere to provide fair and equitable platform for your cloud services evaluation.</p>
       </div>
-      <div class="right" :style="{backgroundImage:'url('+img_1+')'}"></div>
+      <div class="right" :style="{backgroundImage:'url('+img_1+')'}" />
     </div>
     <div class="card-panel_2">
-      <div class="right" :style="{backgroundImage:'url('+img_2+')'}"></div>
+      <div class="right" :style="{backgroundImage:'url('+img_2+')'}" />
       <div class="left">
         <p class="top">02</p>
         <p class="body">来自世界各地的超大样本量众测结果，为您提供最为专业的指导和最为准确的参考。</p>
@@ -33,7 +33,7 @@
         >To provide you with the most professional guidance and the most accurate reference， we acure large sample measurement results from all over the world.</p>
       </div>
     </div>
-    <div class="left_1" :style="{backgroundImage:'url('+img_4+')'}"></div>
+    <div class="left_1" :style="{backgroundImage:'url('+img_4+')'}" />
     <div class="card-panel_3">
       <div class="left">
         <p class="top">03</p>
@@ -42,7 +42,7 @@
           class="foot"
         >For your most practical choice than escort, we provide super subdivided several diagnostic evaluation focused on cloud services.</p>
       </div>
-      <div class="right" :style="{backgroundImage:'url('+img_3+')'}"></div>
+      <div class="right" :style="{backgroundImage:'url('+img_3+')'}" />
     </div>
     <!--     <div class="foot_1" :style="{backgroundImage:'url('+img_5+')'}">
       <div><p>
@@ -55,17 +55,17 @@
         <a href="#">意见反馈</a>
       </p>
       <p>数据中心联盟版权所有 &copy; 2015京ICP备09113703号-1</p></div>
-      
+
     </div>-->
   </el-row>
 </template>
 <script>
-import bg2 from "@/assets/img/banner.svg";
-import bg1 from "@/assets/img/right_1.svg";
-import bg3 from "@/assets/img/bg3.svg";
-import bg4 from "@/assets/img/bg4.svg";
-import bg5 from "@/assets/img/bg5.svg";
-import bg6 from "@/assets/img/bg6.png";
+import bg2 from '@/assets/img/banner.svg'
+import bg1 from '@/assets/img/right_1.svg'
+import bg3 from '@/assets/img/bg3.svg'
+import bg4 from '@/assets/img/bg4.svg'
+import bg5 from '@/assets/img/bg5.svg'
+import bg6 from '@/assets/img/bg6.png'
 
 export default {
   data() {
@@ -76,14 +76,14 @@ export default {
       img_3: bg4,
       img_4: bg5,
       img_5: bg6
-    };
+    }
   },
   methods: {
     handleSetLineChartData(type) {
-      this.$emit("handleSetLineChartData", type);
+      this.$emit('handleSetLineChartData', type)
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .panel-group {
@@ -270,7 +270,7 @@ export default {
     }
     .card-panel_1,
     .card-panel_3 {
-      
+
       width: 90%;
       margin:auto;
       > div:nth-child(1) {
@@ -284,7 +284,7 @@ export default {
        flex:0 1 50%;
       }
     }
- 
+
   }
 }
 @media screen and (max-width: 870px) and (min-width: 768px) {

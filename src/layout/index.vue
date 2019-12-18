@@ -12,7 +12,7 @@
       </right-panel>-->
       <el-footer style="padding:0px">
         <div class="foot_1">
-          <img src="@/assets/img/bg6.png" alt />
+          <img src="@/assets/img/bg6.png" alt>
           <div>
             <p>数据中心联盟版权所有 &copy; 2015京ICP备09113703号-1</p>
             <p>
@@ -37,19 +37,14 @@
   </div>
 </template>
 <script>
-import RightPanel from "@/components/RightPanel";
-import { AppMain, Navbar, Sidebar } from "./components";
-import ResizeMixin from "./mixin/ResizeHandler";
-import { mapState } from "vuex";
-import bg6 from "@/assets/img/bg6.png";
+import RightPanel from '@/components/RightPanel'
+import { AppMain, Navbar, Sidebar } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
+import { mapState } from 'vuex'
+import bg6 from '@/assets/img/bg6.png'
 
 export default {
-  name: "Layout",
-  data() {
-    return {
-      img_5: bg6
-    };
-  },
+  name: 'Layout',
   components: {
     AppMain,
     Navbar,
@@ -58,6 +53,11 @@ export default {
     Sidebar
   },
   mixins: [ResizeMixin],
+  data() {
+    return {
+      img_5: bg6
+    }
+  },
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
@@ -70,16 +70,16 @@ export default {
       return {
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === "mobile"
-      };
+        mobile: this.device === 'mobile'
+      }
     }
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
+      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 @import "~@/styles/mixin.scss";
