@@ -14,10 +14,16 @@
             <el-input v-model="ruleForm.name" />
           </el-form-item>
           <el-form-item label="云主机信息" prop="name">
-            <Tab @setComputing_change="setComputing_change" @activeName_change="activeName_change" />
+            <Tab
+              @setComputing_change="setComputing_change"
+              @activeName_change="activeName_change"
+            />
           </el-form-item>
           <el-form-item label="产品类型" prop="block_product_type">
-            <el-select v-model="ruleForm.block_product_type" placeholder="产品类型">
+            <el-select
+              v-model="ruleForm.block_product_type"
+              placeholder="产品类型"
+            >
               <el-option label="普通盘" value="hdd" />
               <el-option label="SSD盘" value="ssd" />
             </el-select>
@@ -32,7 +38,8 @@
               :loading="loading"
               :disabled="disabled"
               @click="submitForm('ruleForm')"
-            >开始测试</el-button>
+              >开始测试</el-button
+            >
           </el-form-item>
           <p class="meg">任务名称将出现在任务列表</p>
           <p class="meg til_1">支持centos7、centos6、ubuntu14、ubuntu16系统</p>
@@ -40,7 +47,10 @@
           <p class="meg til_3">密码将被明文保存，请使用后更换密码</p>
         </el-form>
       </div>
-      <p class="test">测试时间大约为<span>30分钟</span>，请保持邮箱畅通，完成后将发送邮件提醒</p>
+      <p class="test">
+        测试时间大约为
+        <span>30分钟</span>，请保持邮箱畅通，完成后将发送邮件提醒
+      </p>
     </div>
   </div>
 </template>
@@ -139,36 +149,36 @@ export default {
     margin: auto;
     width: 100%;
     background: #fff;
-  @media screen and (max-width: 1224px) and (min-width: 982px) {
-     >.content {
-      width: 68%;
-      margin-left: 0px;
-      padding: 10px;
-            .demo-ruleForm{
-        position: relative;
-        .meg{
+    @media screen and (max-width: 1224px) and (min-width: 982px) {
+      > .content {
+        width: 68%;
+        margin-left: 0px;
+        padding: 10px;
+        .demo-ruleForm {
+          position: relative;
+          .meg {
             position: absolute;
             top: 0px;
             left: 101%;
             margin: 10px;
-            width:45%;
-            color:#38448e;
-            font-size:14px;
+            width: 45%;
+            color: #38448e;
+            font-size: 14px;
             word-wrap: break-word;
             word-break: break-all;
-        }
-        .til_1{
-          top:200px;
           }
-          .til_2{
-          top:280px;
-        }
-        .til_3{
-           top:350px;
+          .til_1 {
+            top: 200px;
+          }
+          .til_2 {
+            top: 280px;
+          }
+          .til_3 {
+            top: 350px;
+          }
         }
       }
     }
- }
     @media screen and (min-width: 1224px) {
       > .content {
         width: 50%;
@@ -199,7 +209,7 @@ export default {
         }
       }
     }
-        @media screen and (max-width: 982px) and (min-width: 730px) {
+    @media screen and (max-width: 982px) and (min-width: 730px) {
       > .content {
         width: 65%;
         margin-left: 3%;
@@ -229,7 +239,7 @@ export default {
         }
       }
     }
-        @media screen and (max-width: 730px) and (min-width: 544px) {
+    @media screen and (max-width: 730px) and (min-width: 544px) {
       > .content {
         width: 65%;
         margin-left: 3%;
@@ -290,11 +300,11 @@ export default {
       }
     }
   }
-    .test{
-        text-align: center;
+  .test {
+    text-align: center;
     padding-bottom: 50px;
     margin-top: -15px;
-    span{
+    span {
       color: red;
     }
   }

@@ -1,9 +1,18 @@
 <template>
   <div>
-    <el-tabs v-model="activeName" type="border-card" class="right" @tab-click="handleClick">
+    <el-tabs
+      v-model="activeName"
+      type="border-card"
+      class="right"
+      @tab-click="handleClick"
+    >
       <el-tab-pane label="从历史信息中选择" name="message">
         <div class="arrow_header">
-          <div v-for="(data, index) in host_info_list" :key="index" class="arrow">
+          <div
+            v-for="(data, index) in host_info_list"
+            :key="index"
+            class="arrow"
+          >
             <div class="arrow_1">
               <el-radio-group v-model="radio" @change="changeCompu">
                 <el-radio :label="data.id">
@@ -13,12 +22,20 @@
             </div>
             <div class="arrow_2">
               <p>
-                <span class="arrow_3">供应商：{{ data.service_provider_name }}</span>
-                <span style="margin-left:20px" class="arrow_3">IP地址：{{ data.ip_address }}</span>
+                <span
+                  class="arrow_3"
+                >供应商：{{ data.service_provider_name }}</span>
+                <span
+                  style="margin-left:20px"
+                  class="arrow_3"
+                >IP地址：{{ data.ip_address }}</span>
               </p>
               <p>
                 <span class="arrow_3">密码：{{ data.password }}</span>
-                <span style="margin-left:20px" class="arrow_3">用户名：{{ data.username }}</span>
+                <span
+                  style="margin-left:20px"
+                  class="arrow_3"
+                >用户名：{{ data.username }}</span>
               </p>
             </div>
           </div>
@@ -37,7 +54,7 @@
             <el-form-item label="供应商" prop="provider">
               <el-select v-model="ruleForm.provider" placeholder="请选择">
                 <el-option
-                  v-for="(item,index) in allData"
+                  v-for="item in allData"
                   :key="item.id"
                   :label="item.name"
                   :value="item.id"
@@ -55,12 +72,25 @@
               <el-input v-model="ruleForm.login_password" type="password" />
             </el-form-item>
             <el-form-item label="定时任务" prop="radio">
-              <el-radio v-model="ruleForm.timed_task" :label="true">开启</el-radio>
-              <el-radio v-model="ruleForm.timed_task" :label="false">关闭</el-radio>
+              <el-radio
+                v-model="ruleForm.timed_task"
+                :label="true"
+              >开启</el-radio>
+              <el-radio
+                v-model="ruleForm.timed_task"
+                :label="false"
+              >关闭</el-radio>
             </el-form-item>
             <el-form-item>
-              <el-button size="small" @click="resetForm('ruleForm')">取消</el-button>
-              <el-button size="small" type="primary" @click="submitForm('ruleForm')">保存</el-button>
+              <el-button
+                size="small"
+                @click="resetForm('ruleForm')"
+              >取消</el-button>
+              <el-button
+                size="small"
+                type="primary"
+                @click="submitForm('ruleForm')"
+              >保存</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -69,7 +99,7 @@
   </div>
 </template>
 <script>
-import { facilitatorList, setArrow, setComputing } from '@/api/arrow'
+import { facilitatorList, setArrow } from '@/api/arrow'
 export default {
   data() {
     return {
@@ -108,7 +138,7 @@ export default {
         if (valid) {
           const data = this.ruleForm
           setArrow(data).then(data => {
-            if (data.code == 'success') {
+            if (data.code === 'success') {
               this.$message({
                 message: '添加成功',
                 type: 'success'
@@ -138,7 +168,7 @@ export default {
         if (host_info_list) {
           allData.forEach(data_1 => {
             host_info_list.forEach(v => {
-              if (v.service_provider == data_1.id) {
+              if (v.service_provider === data_1.id) {
                 v.service_provider_name = data_1.name
                 return v
               }

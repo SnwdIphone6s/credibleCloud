@@ -2,12 +2,32 @@
   <div class="computing">
     <h4>任务列表</h4>
     <div class="mission">
-      <el-tabs v-model="activeName" type="border-card">
-        <el-tab-pane label="计算能力" name="message"><count /></el-tab-pane>
-        <el-tab-pane label="存储IQ能力" name="memory"><memory /></el-tab-pane>
-        <el-tab-pane label="网络IQ能力"><net /></el-tab-pane>
+      <el-tabs
+        v-model="activeName"
+        type="border-card"
+      >
+        <el-tab-pane
+          label="计算能力"
+          name="message"
+        >
+          <count />
+        </el-tab-pane>
+        <el-tab-pane
+          label="存储能力"
+          name="memory"
+        >
+          <memory />
+        </el-tab-pane>
+        <el-tab-pane label="网络能力">
+          <net />
+        </el-tab-pane>
       </el-tabs>
-      <el-button type="primary" size="mini" style="position: absolute;right:10px;top:5px;" @click="gotoCreat">发起新任务</el-button>
+      <el-button
+        type="primary"
+        size="mini"
+        style="position: absolute;right:10px;top:5px;"
+        @click="gotoCreat"
+      >发起新任务</el-button>
     </div>
   </div>
 </template>
@@ -48,11 +68,10 @@ export default {
     }
   }
 }
-
 </script>
 <style lang="scss" scoped>
 .computing {
-      margin: 50px 160px;
+  margin: 50px 160px;
   h4 {
     display: block;
     font-size: 24px;
@@ -61,32 +80,28 @@ export default {
     margin: 0px;
     margin-bottom: 46px;
   }
->.mission{
-  position:relative;
-}
+  > .mission {
+    position: relative;
+  }
 }
 @media screen and (max-width: 1240px) and (min-width: 1024px) {
-.computing {
-      margin: 50px 80px;
-
-}
+  .computing {
+    margin: 50px 80px;
   }
-  @media screen and (max-width: 1024px) and (min-width: 870px) {
-.computing {
-      margin: 50px 40px;
-
 }
+@media screen and (max-width: 1024px) and (min-width: 870px) {
+  .computing {
+    margin: 50px 40px;
   }
-    @media screen and (max-width: 870px) and (min-width: 740px) {
-.computing {
-      margin: 50px 20px;
-
 }
+@media screen and (max-width: 870px) and (min-width: 740px) {
+  .computing {
+    margin: 50px 20px;
   }
-      @media screen and (max-width: 544px) {
-.computing {
-      margin: 50px 5px;
-
 }
+@media screen and (max-width: 544px) {
+  .computing {
+    margin: 50px 5px;
   }
+}
 </style>

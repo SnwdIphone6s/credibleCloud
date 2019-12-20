@@ -14,7 +14,10 @@
             <el-input v-model="ruleForm.name" />
           </el-form-item>
           <el-form-item label="云主机信息" prop="name">
-            <Tab @setComputing_change="setComputing_change" @activeName_change="activeName_change" />
+            <Tab
+              @setComputing_change="setComputing_change"
+              @activeName_change="activeName_change"
+            />
           </el-form-item>
           <el-form-item>
             <el-button @click="resetForm('ruleForm')">取消</el-button>
@@ -39,8 +42,7 @@
   </div>
 </template>
 <script>
-import { getArrow, facilitatorList, setComputing } from '@/api/arrow'
-import { check_current } from '@/api/user'
+import { setComputing } from '@/api/arrow'
 import Tab from './tab.vue'
 export default {
   components: {
@@ -84,7 +86,7 @@ export default {
           }
           this.loading = true
           setComputing(param).then(data => {
-            if (data.code == 'success') {
+            if (data.code === 'success') {
               this.$message({
                 message: '添加成功',
                 type: 'success'

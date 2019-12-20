@@ -152,7 +152,7 @@ export default {
     async setLogout() {
       await this.$store.dispatch('user/logout').then(data => {
         this.$router.push('/dashboard')
-        // this.$router.go(0)
+        this.$router.go(0)
       })
     },
     GetRequest() {
