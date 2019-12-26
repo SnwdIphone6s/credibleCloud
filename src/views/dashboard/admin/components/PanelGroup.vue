@@ -199,21 +199,24 @@ export default {
     .card-panel {
       min-height: 269px;
       .marker {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
       }
     }
     .til {
       display: inline-block;
       position: absolute;
       right: 2%;
-      top: 5%;
+      top: 6%;
       > div:nth-child(1) {
-        font-size: 18px;
+        font-size: 16px;
+        >span:nth-child(3){
+          margin-left:0px;
+        }
       }
       > div:nth-child(2) {
         margin-top: 18px;
-        font-size: 18px;
+        font-size: 14px;
       }
     }
     .card-panel_1,

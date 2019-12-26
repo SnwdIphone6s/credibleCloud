@@ -10,10 +10,16 @@
           label-width="100px"
           class="demo-ruleForm"
         >
-          <el-form-item label="任务名称" prop="name">
+          <el-form-item
+            label="任务名称"
+            prop="name"
+          >
             <el-input v-model="ruleForm.name" />
           </el-form-item>
-          <el-form-item label="云主机信息" prop="name">
+          <el-form-item
+            label="云主机信息"
+            prop="name"
+          >
             <Tab
               @setComputing_change="setComputing_change"
               @activeName_change="activeName_change"
@@ -68,8 +74,8 @@ export default {
       }
     }
   },
-  mounted() {},
-  created() {},
+  mounted() { },
+  created() { },
   methods: {
     setComputing_change(id) {
       this.host_info_id = id

@@ -46,33 +46,88 @@
         <thead>
           <tr>
             <th>测试项</th>
-            <th>宽带</th>
-            <th>IOPS</th>
-            <th>反应时间</th>
+            <th>基准值</th>
+            <th>我的测试</th>
           </tr>
         </thead>
         <tbody>
+          <td>总分</td>
+          <td>100</td>
+          <td>{{ total }}</td>
           <tr>
-            <td rowspan="2">4K随机</td>
-            <td>读 {{ count_data.bandwidth_small_read_ran }}</td>
-            <td>读 {{ count_data.iops_small_read_ran }}</td>
-            <td>读 {{ count_data.latency_small_read_ran }}</td>
+            <td>4K随机</td>
+            <td>50</td>
+            <td>{{ k4_num * 1 }}</td>
+          </tr>
+          <tr class="left_td">
+            <td>磁盘吞吐量 读</td>
+            <td> {{ count_data.randread_4k_mbs_standard }} (MB/s)</td>
+            <td> {{ count_data.randread_4k_mbs_result }} (MB/s)</td>
+          </tr>
+          <tr class="left_td">
+            <td>磁盘吞吐量 写</td>
+            <td> {{ count_data.randwrite_4k_mbs_standard }} (MB/s)</td>
+            <td>{{ count_data.randwrite_4k_mbs_result }} (MB/s)</td>
+          </tr>
+          <tr class="left_td">
+            <td>IOPS 读</td>
+            <td> {{ count_data. randread_4k_iops_standard }} (io/s)</td>
+            <td>{{ count_data.randread_4k_iops_result }} (io/s)</td>
+          </tr>
+          <tr class="left_td">
+            <td>IOPS 写</td>
+            <td> {{ count_data.randwrite_4k_iops_standard }} (io/s)</td>
+            <td>{{ count_data.randwrite_4k_iops_result }} (io/s)</td>
+          </tr>
+          <tr v-if="count_data.randread_4k_avg_res_time_usec_standard || count_data.randread_4k_avg_res_time_usec_result" class="left_td">
+            <td>平均响应时间 读 </td>
+            <td v-if="count_data.randread_4k_avg_res_time_usec_standard"> {{ count_data.randread_4k_avg_res_time_usec_standard }} (ms)</td>
+            <td v-if="count_data.randread_4k_avg_res_time_usec_result">{{ count_data.randread_4k_avg_res_time_usec_result }} (ms)</td>
+          </tr>
+          <tr v-if="count_data. randwrite_4k_avg_res_time_usec_standard || count_data.randwrite_4k_avg_res_time_usec_result" class="left_td">
+            <td>平均响应时间 写</td>
+            <td v-if="count_data. randwrite_4k_avg_res_time_usec_standard"> {{ count_data. randwrite_4k_avg_res_time_usec_standard }} (ms)</td>
+            <td v-if="count_data.randwrite_4k_avg_res_time_usec_result">{{ count_data.randwrite_4k_avg_res_time_usec_result }} (ms)</td>
           </tr>
           <tr>
-            <td>写 {{ count_data.bandwidth_small_write_ran }}</td>
-            <td>写 {{ count_data.iops_small_write_ran }}</td>
-            <td>写 {{ count_data.latency_small_write_ran }}</td>
+            <td>64k随机</td>
+            <td>50</td>
+            <td>{{ k64_num * 1 }}</td>
+          </tr>
+
+          <tr class="left_td">
+            <td>磁盘吞吐量 读</td>
+            <td> {{ count_data.read_64k_mbs_standard }} (MB/s)</td>
+            <td> {{ count_data.read_64k_mbs_result }} (MB/s)</td>
+          </tr>
+          <tr class="left_td">
+            <td>磁盘吞吐量 写</td>
+            <td> {{ count_data.write_64k_mbs_standard }} (MB/s)</td>
+            <td>{{ count_data.write_64k_mbs_result }} (MB/s)</td>
+          </tr>
+          <tr class="left_td">
+            <td>IOPS 读</td>
+            <td> {{ count_data.read_64K_iops_standard }} (io/s)</td>
+            <td>{{ count_data.read_64K_iops_result }} (io/s)</td>
+          </tr>
+          <tr class="left_td">
+            <td>IOPS 写</td>
+            <td> {{ count_data.write_64_iops_standard }} (io/s)</td>
+            <td>{{ count_data.write_64_iops_result }} (io/s)</td>
+          </tr>
+          <tr v-if="count_data. read_64k_avg_res_time_usec_standard || count_data.read_64k_avg_res_time_usec_result" class="left_td">
+            <td>平均响应时间 读 </td>
+            <td v-if="count_data. read_64k_avg_res_time_usec_standard"> {{ count_data. read_64k_avg_res_time_usec_standard }} (ms)</td>
+            <td v-if="count_data.read_64k_avg_res_time_usec_result">{{ count_data.read_64k_avg_res_time_usec_result }} (ms)</td>
+          </tr>
+          <tr v-if="count_data. write_64k_avg_res_time_usec_standard || count_data.write_64k_avg_res_time_usec_result" class="left_td">
+            <td>平均响应时间 写</td>
+            <td v-if="count_data. write_64k_avg_res_time_usec_standard"> {{ count_data. write_64k_avg_res_time_usec_standard }} (ms)</td>
+            <td v-if=" count_data.write_64k_avg_res_time_usec_result">{{ count_data.write_64k_avg_res_time_usec_result }} (ms)</td>
           </tr>
           <tr>
-            <td rowspan="2">64K顺序</td>
-            <td>读 {{ count_data.bandwidth_large_read_seq }}</td>
-            <td>读 {{ count_data.iops_large_read_seq }}</td>
-            <td>读 {{ count_data.latency_large_read_seq }}</td>
-          </tr>
-          <tr>
-            <td>写 {{ count_data.bandwidth_large_write_seq }}</td>
-            <td>写 {{ count_data.iops_large_write_seq }}</td>
-            <td>写 {{ count_data.latency_large_write_seq }}</td>
+            <td>测试工具</td>
+            <td>{{ count_data.tool }}</td>
           </tr>
         </tbody>
       </table>
@@ -95,6 +150,8 @@ export default {
       },
       count_data: {},
       total: '',
+      k4_num: '',
+      k64_num: '',
       name: '',
       cpu_int: [],
       cpu_float: [],
@@ -126,14 +183,16 @@ export default {
         const count_data = data.data
         this.count_data = count_data
         this.BarChartData.a_Data = [
-          count_data.score_4k.toFixed(4) * 1,
+          count_data.score_4k.toFixed(2) * 1,
           count_data.total_4k_small_weight
         ]
         this.BarChartData.b_Data = [
-          count_data.score_64k.toFixed(4) * 1,
+          count_data.score_64k.toFixed(2) * 1,
           count_data.total_64k_large_weight
         ]
-        this.total = count_data.score_4k + count_data.score_64k
+        this.k4_num = count_data.score_4k.toFixed(2)
+        this.k64_num = count_data.score_64k.toFixed(2)
+        this.total = (count_data.score_4k + count_data.score_64k).toFixed(2)
       })
     }
   }
@@ -144,6 +203,7 @@ export default {
   button {
     position: absolute;
     right: 20px;
+    top:10px;
   }
   text-align: center;
   width: 80%;
@@ -194,6 +254,16 @@ export default {
             width: 200px;
           }
         }
+        >.left_td{
+          >td:nth-child(1){
+            padding-left: 20px;
+            border-left: 2px solid #5db5fc;
+            font-size:12px;
+          }
+          >td{
+            font-size:12px;
+          }
+        }
       }
       th {
         border-bottom: 2px solid #5db5fc;
@@ -204,18 +274,21 @@ export default {
         width: 100px;
         height: 30px;
       }
-      .speal {
-        font-size: 12px;
-        td:nth-child(1) {
-          padding-left: 20px;
-          border-left: 2px solid #5db5fc;
-        }
-      }
+
     }
   }
   .til {
     font-size: 18px;
     font-weight: 600;
   }
+}
+@media screen and (max-width: 620px) {
+.loadcount {
+  .body {
+    > div {
+      display: block;
+    }
+  }
+}
 }
 </style>

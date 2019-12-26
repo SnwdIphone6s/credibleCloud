@@ -121,7 +121,7 @@ const actions = {
           commit('SET_USERNAME', '')
           removeToken()
           removeUserName()
-
+          window.location.href = '/dashboard'
           resolve()
         })
         .catch(error => {

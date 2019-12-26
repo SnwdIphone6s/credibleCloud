@@ -61,35 +61,36 @@
             <td>{{ total }}</td>
           </tr>
           <tr>
-            <td>CUP浮点</td>
-            <td>30</td>
+            <td>CPU浮点计算性能</td>
+            <td>30 </td>
             <td>{{ (count_data.scpuFloat * 0.3).toFixed(2) }}</td>
           </tr>
           <tr v-for="(item, index) in cpu_float" class="speal">
             <td>{{ item.tool }}</td>
-            <td>{{ item.standard }}</td>
-            <td>{{ item.result }}</td>
+            <td>{{ item.standard }} (s)</td>
+            <td>{{ item.result }} (s)</td>
           </tr>
           <tr>
-            <td>CPU整形</td>
+            <td>CPU整数计算性能</td>
             <td>30</td>
             <td>{{ (count_data.scpuInt * 0.3).toFixed(2) }}</td>
           </tr>
           <tr v-for="(item, index) in cpu_int" class="speal">
-            <td>{{ item.tool }}</td>
-            <td>{{ item.standard }}</td>
-            <td>{{ item.result }}</td>
+            <td>{{ item.tool }} </td>
+            <td v-if="item.tool === 'pts/openssl-1.9.0'">{{ item.standard }} (sign/s)</td>
+            <td v-else="item.tool !== 'pts/openssl-1.9.0'">{{ item.standard }} (s)</td>
+            <td v-if="item.tool === 'pts/openssl-1.9.0'">{{ item.result }} (sign/s)</td>
+            <td v-else="item.tool !== 'pts/openssl-1.9.0'">{{ item.result }} (s)</td>
           </tr>
-
           <tr>
-            <td>内存</td>
-            <td>40</td>
-            <td>{{ (count_data.s_ram * 0.3).toFixed(2) }}</td>
+            <td>内存吞吐性能</td>
+            <td>40 </td>
+            <td>{{ (count_data.s_ram * 0.4).toFixed(2) }}</td>
           </tr>
           <tr v-for="(item, index) in cpu_s_ram" class="speal">
             <td>{{ item.tool }}</td>
-            <td>{{ item.standard }}</td>
-            <td>{{ item.result }}</td>
+            <td>{{ item.standard }} (MB/s)</td>
+            <td>{{ item.result }} (MB/s)</td>
           </tr>
         </tbody>
       </table>
@@ -151,10 +152,10 @@ export default {
           (count_data.s_ram * 0.4).toFixed(4) * 1,
           40
         ]
-        this.total =
+        this.total = (
           count_data.scpuFloat * 0.3 +
-          count_data.scpuInt * 0.3 +
-          count_data.s_ram * 0.4
+                  count_data.scpuInt * 0.3 +
+                  count_data.s_ram * 0.4).toFixed(2)
         this.cpu_int = data.data.test_result_list.filter(
           v => v.metric == 'cpu_int'
         )
@@ -174,6 +175,7 @@ export default {
   button {
     position: absolute;
     right: 20px;
+    top:10px;
   }
   text-align: center;
   width: 80%;
@@ -247,5 +249,14 @@ export default {
     font-size: 18px;
     font-weight: 600;
   }
+}
+@media screen and (max-width: 620px) {
+.loadcount {
+  .body {
+    > div {
+      display: block;
+    }
+  }
+}
 }
 </style>

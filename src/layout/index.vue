@@ -147,14 +147,24 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .foot_1 {
+      > img {
+    width: 100%;
+    height:130px;
+    }
     > div {
       p:nth-child(1) {
         margin-top: -28px;
+            font-size: 12px;
       }
       p:nth-child(2) {
-        margin-top: -75px;
+            margin-top: -50px;
+            font-size:10px;
       }
     }
+      a {
+    padding: 0 3px;
+    cursor: pointer;
+  }
   }
 }
 </style>

@@ -46,18 +46,39 @@
         <thead>
           <tr>
             <th>测试项</th>
-            <th>值</th>
+            <th>基准值</th>
+            <th>我的测试</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>带宽</td>
-            <td>{{ count_data.bandwidth }}</td>
+            <td>总分</td>
+            <td>100</td>
+            <td>{{ total }}</td>
           </tr>
-
           <tr>
-            <td>延迟</td>
-            <td>{{ count_data.latency }}</td>
+            <td>网络吞吐量得分</td>
+            <td>50</td>
+            <td>{{ bandwith }}</td>
+          </tr>
+          <tr class="left_td">
+            <td>网络吞吐量</td>
+            <td>{{ count_data.network_bandwith_standard }} (Mbit/s)</td>
+            <td>{{ count_data.network_bandwith_result }} (Mbit/s)</td>
+          </tr>
+          <tr>
+            <td>延时得分</td>
+            <td>50</td>
+            <td>{{ network }}</td>
+          </tr>
+          <tr class="left_td">
+            <td>延时</td>
+            <td>{{ count_data.network_latency_standard }}  (ms)</td>
+            <td>{{ count_data.network_latency_result }} (ms)</td>
+          </tr>
+          <tr>
+            <td>测试工具</td>
+            <td>{{ count_data.tool }}</td>
           </tr>
         </tbody>
       </table>
@@ -80,6 +101,8 @@ export default {
       },
       count_data: {},
       total: '',
+      bandwith: '',
+      network: '',
       name: '',
       cpu_int: [],
       cpu_float: [],
@@ -87,7 +110,7 @@ export default {
       BarChartData: {
         a_Data: [],
         b_Data: [],
-        name: ['带宽', '延迟']
+        name: ['网络吞吐量', '延时']
       }
     }
   },
@@ -110,27 +133,17 @@ export default {
       vm_test_coun(param).then(data => {
         const count_data = data.data
         this.count_data = count_data
-        this.BarChartData.a_Data = [count_data.bandwidth.toFixed(4) * 1, 50]
-        // this.count_data = count_data;
-        // this.BarChartData.a_Data = [
-        //   (count_data.scpuFloat ).toFixed(4) * 1,
-        //   30
-        // ];
-        this.BarChartData.b_Data = [count_data.latency.toFixed(4) * 1, 50]
-        // this.BarChartData.v_Data = [
-        //   (count_data.s_ram ).toFixed(4) * 1,
-        //   40
-        // ];
-        this.total = count_data.bandwidth + count_data.latency
-        // this.cpu_int = data.data.test_result_list.filter(
-        //   v => v.metric == "cpu_int"
-        // );
-        // this.cpu_float = data.data.test_result_list.filter(
-        //   v => v.metric == "cpu_float"
-        // );
-        // this.cpu_s_ram = data.data.test_result_list.filter(
-        //   v => v.metric == "cpu_s_ram"
-        // );
+        const nb_r = count_data.network_bandwith_result
+        const nb_s = count_data.network_bandwith_standard
+        const nl_r = count_data.network_latency_result
+        const nl_s = count_data.network_latency_standard
+        this.BarChartData.a_Data = [((nb_r) / (nb_s) * 100 * 0.5).toFixed(2) * 1, 50]
+
+        this.BarChartData.b_Data = [((nl_s) / (nl_r) * 100 * 0.5).toFixed(2) * 1, 50]
+
+        this.total = (((nb_r) / (nb_s) * 100 * 0.5) + ((nl_s) / (nl_r) * 100 * 0.5)).toFixed(2)
+        this.bandwith = ((nb_r) / (nb_s) * 100 * 0.5).toFixed(2) * 1
+        this.network = ((nl_s) / (nl_r) * 100 * 0.5).toFixed(2) * 1
       })
     }
   }
@@ -141,6 +154,7 @@ export default {
   button {
     position: absolute;
     right: 20px;
+    top:10px;
   }
   text-align: center;
   width: 80%;
@@ -191,10 +205,20 @@ export default {
             width: 200px;
           }
         }
+         >.left_td{
+          >td:nth-child(1){
+            padding-left: 20px;
+            border-left: 2px solid #5db5fc;
+            font-size:12px;
+          }
+          >td{
+            font-size:12px;
+          }
+        }
       }
       th {
         border-bottom: 2px solid #5db5fc;
-        width: 150px;
+        width: 190px;
         height: 80px;
       }
       td {
@@ -214,5 +238,14 @@ export default {
     font-size: 18px;
     font-weight: 600;
   }
+}@media screen and (max-width: 620px) {
+.loadcount {
+  .body {
+    > div {
+      display: block;
+    }
+  }
 }
+}
+
 </style>

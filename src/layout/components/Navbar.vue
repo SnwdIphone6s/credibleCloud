@@ -151,8 +151,8 @@ export default {
 
     async setLogout() {
       await this.$store.dispatch('user/logout').then(data => {
-        this.$router.push('/dashboard')
-        this.$router.go(0)
+        // this.$router.push('/dashboard')
+        // this.$router.go(0)
       })
     },
     GetRequest() {
@@ -211,6 +211,7 @@ export default {
     font-size: 12px;
     display: flex;
     align-items: center;
+    height: 40px;
     background-image: linear-gradient(
       to right,
       rgba(132, 146, 253, 1),
@@ -220,15 +221,22 @@ export default {
     height: 50px;
     overflow: hidden;
     position: relative;
-    justify-content: space-around;
+    justify-content: flex-start;
     img {
-      width: 100%;
+      width: 134%;
+      height: 25px;
+      margin-left: 10px;
     }
     > span {
-      flex: 0 1 30%;
+      flex: 0 1 20%;
     }
+    >div:nth-child(2){
+      margin-left:40px;
+    }
+
     .right-menu {
       color: #fff;
+      margin-left:15px;
       cursor: pointer;
     }
   }

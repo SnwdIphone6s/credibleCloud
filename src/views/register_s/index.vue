@@ -204,7 +204,14 @@ export default {
 
   >.body {
     >.content {
-    width:66%
+    width:66%;
+         button {
+       width: 100%;
+    margin: 0;
+      }
+      .meg{
+        margin-left:0px;
+      }
     }
   }
 }
@@ -214,7 +221,14 @@ export default {
     margin: 50px 45px;
   >.body {
     >.content {
-    width:66%
+    width:66%;
+         button {
+       width: 100%;
+    margin: 0;
+      }
+      .meg{
+        margin-left:0px;
+      }
     }
   }
 }
@@ -225,9 +239,12 @@ export default {
   >.body {
     >.content {
     width:93%;
-         button {
-
-        width: 65%;
+      button {
+       width: 100%;
+    margin: 0;
+      }
+      .meg{
+        margin-left:0px;
       }
     }
   }

@@ -77,8 +77,8 @@ export default {
           data: name
         },
         grid: {
-          left: '20%',
-          right: '20%',
+          left: '5%',
+          right: '5%',
           bottom: '20%',
           containLabel: true
         },

@@ -346,11 +346,12 @@ aside {
 }
 @media screen and (max-width: 544px) {
   .el-menu-item.submenu-title-noDropdown {
-    padding: 0 3px;
+    padding: 0 5px;
+    font-size:12px;
   }
   .login {
     .el-dialog {
-      width: 90%;
+      width: 98%;
     }
     form {
       > div {

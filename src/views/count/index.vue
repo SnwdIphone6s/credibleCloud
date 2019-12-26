@@ -38,8 +38,7 @@
               :loading="loading"
               :disabled="disabled"
               @click="submitForm('ruleForm')"
-              >开始测试</el-button
-            >
+            >开始测试</el-button>
           </el-form-item>
           <p class="meg">任务名称将出现在任务列表</p>
           <p class="meg til_1">支持centos7、centos6、ubuntu14、ubuntu16系统</p>
