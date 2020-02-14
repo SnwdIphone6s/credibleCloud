@@ -1,10 +1,13 @@
 <template>
   <div class="navbar">
-    <span>
+    <!-- <span>
       <img src="@/assets/img/logo_xiao.png" alt>
-    </span>
-    <div>
-      <logo v-if="showLogo" :collapse="isCollapse" />
+    </span> -->
+    <div class="nav_bar">
+      <logo
+        v-if="showLogo"
+        :collapse="isCollapse"
+      />
       <el-scrollbar wrap-class="scrollbar-wrapper">
         <el-menu
           :default-active="activeMenu"
@@ -24,17 +27,22 @@
     </div>
     <div class="right-menu">
       <div v-if="userName">
-        <span>欢迎回来，{{ name }}</span> &nbsp;
+        <p class="welCom welName">欢迎回来，{{ name }}</p> &nbsp;
         <b>|</b>&nbsp;
-        <span @click="setLogout">退出</span>
+        <p class="welCom" @click="setLogout">退出</p>
       </div>
       <div v-if="!userName">
-        <span @click="toRegister">注册</span>&nbsp;
+        <p class="welCom" @click="toRegister">注册</p>&nbsp;
         <b>|</b>&nbsp;
-        <span @click="toLogin">登录</span>
+        <p class="welCom" @click="toLogin">登录</p>
       </div>
     </div>
-    <Login :show="msg" style="position:absolute;" @changeShow="changeShow" @setName="setName" />
+    <Login
+      :show="msg"
+      style="position:absolute;"
+      @changeShow="changeShow"
+      @setName="setName"
+    />
   </div>
 </template>
 <script>
@@ -184,6 +192,8 @@ export default {
 <style lang="scss" scoped>
 @media screen and (min-width: 544px) {
   .navbar {
+
+    margin-top: 84px;
     display: flex;
     align-items: center;
     background-image: linear-gradient(
@@ -199,15 +209,29 @@ export default {
     img {
       width: 100%;
     }
+    .nav_bar {
+      flex: 0 1 49%;
+    }
     .right-menu {
+      background-color: rgba(255, 255, 255, 0.2);
+      text-align: center;
       color: #fff;
       cursor: pointer;
+      height: 35px;
+      max-width: 260px;
+      line-height: 35px;
+      border-radius: 25px;
+         >div{
+        padding:0 15px;
+        display:flex;
+      }
     }
   }
 }
 
 @media screen and (max-width: 544px) {
   .navbar {
+
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -217,7 +241,6 @@ export default {
       rgba(132, 146, 253, 1),
       rgba(93, 181, 252, 1)
     );
-
     height: 50px;
     overflow: hidden;
     position: relative;
@@ -230,15 +253,41 @@ export default {
     > span {
       flex: 0 1 20%;
     }
-    >div:nth-child(2){
-      margin-left:40px;
+    > div:nth-child(2) {
+      margin-left: 35px;
     }
-
+    .nav_bar {
+      flex: 0 1 49%;
+    }
     .right-menu {
+background-color: rgba(255,255,255,0.2);
+      text-align: center;
       color: #fff;
-      margin-left:15px;
       cursor: pointer;
+      height: 35px;
+      max-width: 260px;
+      line-height: 35px;
+      border-radius: 25px;
+      >div{
+        padding:0 15px;
+        display:flex;
+      }
     }
   }
+}
+@media screen and (max-width: 787px) {
+  .navbar {
+    margin-top: 50px;
+  }
+}
+.welCom{
+  margin:0px;
+  display:inline-block;
+}
+
+@media screen and (max-width: 400px) {
+   .welName{
+  width: 66px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
 }
 </style>

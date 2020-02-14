@@ -72,7 +72,7 @@ service.interceptors.response.use(
         })
       }
       Cookies.set('show', true)
-      store.dispatch('user/setShow', true)
+      // store.dispatch('user/setShow', true)
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       store.dispatch('user/setShow', false)
