@@ -38,6 +38,7 @@
           <p class="meg til_1">支持centos7、centos6、ubuntu14、ubuntu16系统</p>
           <p class="meg til_2">请提供root权限账号，否则测试可能无法正常进行</p>
           <p class="meg til_3">密码将被明文保存，请使用后更换密码</p>
+          <p class="meg til_4">当虚机定时任务开启,虚机会自动进行计算能力、磁盘能力、网卡能力测试.</p>
         </el-form>
       </div>
       <p class="test">
@@ -131,6 +132,7 @@ export default {
     margin: auto;
     width: 100%;
     background: #fff;
+
     @media screen and (max-width: 1224px) and (min-width: 982px) {
       > .content {
         width: 68%;
@@ -158,6 +160,9 @@ export default {
           .til_3 {
             top: 350px;
           }
+              .til_4{
+      top: 400px;
+    }
         }
       }
     }
@@ -188,6 +193,9 @@ export default {
           .til_3 {
             top: 350px;
           }
+              .til_4{
+      top: 400px;
+    }
         }
       }
     }
@@ -218,6 +226,9 @@ export default {
           .til_3 {
             top: 350px;
           }
+              .til_4{
+      top: 400px;
+    }
         }
       }
     }
@@ -248,6 +259,9 @@ export default {
           .til_3 {
             top: 350px;
           }
+              .til_4{
+      top: 400px;
+    }
         }
       }
     }
@@ -270,14 +284,17 @@ export default {
             word-break: break-all;
           }
           .til_1 {
-            top: 260px;
+            top: 250px;
           }
           .til_2 {
-            top: 475px;
+            top: 350px;
           }
           .til_3 {
-            top: 600px;
+            top: 450px;
           }
+                        .til_4{
+      top: 550px;
+    }
         }
       }
     }

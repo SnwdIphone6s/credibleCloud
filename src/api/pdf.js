@@ -7,4 +7,10 @@ export function vm_test_coun(query) {
     params: query
   })
 }
-
+export function getScore(data) {
+  return request({
+    url: 'vm/test_instance/vm_score_rank',
+    method: 'post',
+    data
+  })
+}

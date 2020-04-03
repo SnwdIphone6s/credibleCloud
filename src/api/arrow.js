@@ -7,6 +7,14 @@ export function setArrow(data) {
     data
   })
 }
+export function updateArrow(data) {
+  return request({
+    url: '/vm/info/update',
+    method: 'post',
+    data
+  })
+}
+
 export function facilitatorList(query) {
   return request({
     url: 'vm/facilitator_list',

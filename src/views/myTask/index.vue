@@ -1,69 +1,59 @@
 <template>
   <div class="computing">
-    <h4>任务列表</h4>
     <div class="mission">
+
       <el-tabs
-        v-model="activeName"
-        type="border-card"
+        :tab-position="tabPosition"
+        class="myTask"
+        @tab-click="handleClick"
       >
         <el-tab-pane
-          label="计算能力"
-          name="message"
+          id="qwqw"
+          label="我的虚机"
+          class="myTask_item"
+          style="height:120"
         >
-          <count />
+          <myCloud ref="child1" />
         </el-tab-pane>
         <el-tab-pane
-          label="存储能力"
-          name="memory"
+          label="虚机任务"
+          class="myTask_item"
+          style="height:120"
         >
-          <memory />
+          <oldIndex />
         </el-tab-pane>
-        <el-tab-pane label="网络能力">
-          <net />
+        <el-tab-pane
+          label="虚机排名"
+          class="myTask_item"
+          style="height:120"
+        >
+          <cloudRank />
         </el-tab-pane>
       </el-tabs>
-      <el-button
-        type="primary"
-        size="mini"
-        style="position: absolute;right:10px;top:5px;"
-        @click="gotoCreat"
-      >发起新任务</el-button>
     </div>
   </div>
 </template>
 <script>
-import Count from './count.vue'
-import Net from './net.vue'
-import Memory from './memory.vue'
+
+import oldIndex from './oldIndex'
+import cloudRank from './cloudRank'
+import myCloud from './myCloud'
 export default {
   components: {
-    Count,
-    Memory,
-    Net
+    myCloud,
+    oldIndex,
+    cloudRank
   },
   data() {
     return {
-      driver: null,
-      activeName: 'message',
-      modules: [{ moduleName: '添加新任务' }]
+      tabPosition: 'left'
     }
   },
-  mounted() {},
+  mounted() { },
   methods: {
-    //    handleClick(tab, event) {
-    // if(this.activeName == 'message'){
-    //  this.$emit('activeName_change', true)
-    // }else{
-    //  this.$emit('activeName_change', false)
-    // }
-    //  },
-    gotoCreat() {
-      if (this.activeName == 'message') {
-        this.$router.push({ name: 'computing' })
-      } else if (this.activeName == 'memory') {
-        this.$router.push({ name: 'block-test' })
-      } else {
-        this.$router.push({ name: 'net-test' })
+    handleClick(tab, event) {
+      if (tab.label === '我的虚机') {
+        this.$refs.child1.handleParentClick()
       }
     }
   }
@@ -71,7 +61,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .computing {
-  margin: 50px 160px;
   h4 {
     display: block;
     font-size: 24px;
@@ -84,24 +73,50 @@ export default {
     position: relative;
   }
 }
-@media screen and (max-width: 1240px) and (min-width: 1024px) {
-  .computing {
-    margin: 50px 80px;
+  @media screen and (max-width: 1224px) and (min-width: 982px) {
+    .computing {
+      margin: 50px 60px;
+    form{
+      padding: 50px;
+      width: 70%;
+    }
+   }
+ }
+  @media screen and (min-width: 1224px) {
+    .computing {
+      margin: 50px 160px;
+    form{
+      padding: 50px;
+      width: 50%;
+      margin: auto;
+    }
+   }
   }
-}
-@media screen and (max-width: 1024px) and (min-width: 870px) {
-  .computing {
-    margin: 50px 40px;
+  @media screen and (max-width: 982px) and (min-width: 730px) {
+    .computing {
+      margin: 50px 30px;
+    form{
+      padding: 50px;
+      width: 70%;
+    }
+   }
   }
-}
-@media screen and (max-width: 870px) and (min-width: 740px) {
-  .computing {
-    margin: 50px 20px;
+  @media screen and (max-width: 730px) and (min-width: 544px) {
+    .computing {
+      margin: 50px 20px;
+    form{
+      padding: 50px;
+      width: 70%;
+    }
+   }
   }
-}
-@media screen and (max-width: 544px) {
-  .computing {
-    margin: 50px 5px;
+  @media screen and (max-width: 544px) {
+    .computing {
+      margin: 50px 10px;
+    form{
+      padding: 20px;
+      width: 70%;
+    }
+   }
   }
-}
 </style>

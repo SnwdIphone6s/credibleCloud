@@ -63,7 +63,7 @@
           <tr>
             <td>CPU浮点计算性能</td>
             <td>30 </td>
-            <td>{{ (count_data.scpuFloat * 0.3).toFixed(2) }}</td>
+            <td>{{ (count_data.s_cpu_float * 0.3).toFixed(2) }}</td>
           </tr>
           <tr v-for="(item, index) in cpu_float" class="speal">
             <td>{{ item.tool }}</td>
@@ -73,7 +73,7 @@
           <tr>
             <td>CPU整数计算性能</td>
             <td>30</td>
-            <td>{{ (count_data.scpuInt * 0.3).toFixed(2) }}</td>
+            <td>{{ (count_data.s_cpu_int * 0.3).toFixed(2) }}</td>
           </tr>
           <tr v-for="(item, index) in cpu_int" class="speal">
             <td>{{ item.tool }} </td>
@@ -141,20 +141,20 @@ export default {
         const count_data = data.data.test_vm
         this.count_data = count_data
         this.BarChartData.a_Data = [
-          (count_data.scpuFloat * 0.3).toFixed(4) * 1,
+          (count_data.s_cpu_float * 0.3).toFixed(2) * 1,
           30
         ]
         this.BarChartData.b_Data = [
-          (count_data.scpuInt * 0.3).toFixed(4) * 1,
+          (count_data.s_cpu_int * 0.3).toFixed(2) * 1,
           30
         ]
         this.BarChartData.v_Data = [
-          (count_data.s_ram * 0.4).toFixed(4) * 1,
+          (count_data.s_ram * 0.4).toFixed(2) * 1,
           40
         ]
         this.total = (
-          count_data.scpuFloat * 0.3 +
-                  count_data.scpuInt * 0.3 +
+          count_data.s_cpu_float * 0.3 +
+                  count_data.s_cpu_int * 0.3 +
                   count_data.s_ram * 0.4).toFixed(2)
         this.cpu_int = data.data.test_result_list.filter(
           v => v.metric == 'cpu_int'

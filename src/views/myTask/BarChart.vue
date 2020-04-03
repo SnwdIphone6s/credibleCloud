@@ -56,6 +56,19 @@ export default {
     this.chart = null
   },
   methods: {
+    setMyChart() {
+      // jq写法
+      // 获取父元素
+      var echarts = $('.echarts')
+      // 获取父元素宽高
+      var echartsWidth = echarts.outerWidth(true)
+      var echartsHeight = echarts.outerHeight(true)
+      // 获取图表元素
+      var myChart = $('#myChart')
+      // 将父元素宽高赋值给图表
+      myChart.css('width', myChart)
+      myChart.css('height', myChart)
+    },
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
       this.setOptions(this.chartData)

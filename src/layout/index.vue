@@ -9,7 +9,7 @@
         <header class="header fnt-16 cf">
           <div class="wrap cf">
             <div class="logo"><a
-              href="http://182.92.161.103:8888/"
+              href="https://www.kexinyun.org.cn/"
               title="可信云"
             ><img
               src="@/assets/img/logo.jpg"
@@ -24,41 +24,41 @@
                 <ul class="fixed">
                   <!--选中 样式 on，加到li上面-->
                   <li>
-                    <p><a href="http://182.92.161.103:8888/">首页</a></p>
+                    <p><a href="https://www.kexinyun.org.cn/">首页</a></p>
                   </li>
                   <li>
-                    <p><a href="http://182.92.161.103:8888/services/index">云服务</a><i /></p>
+                    <p><a href="https://www.kexinyun.org.cn/services/index">云服务</a><i /></p>
 
                   </li>
                   <li>
-                    <p><a href="http://182.92.161.103:8888/case/index">解决方案</a><i /></p>
+                    <p><a href="https://www.kexinyun.org.cn/case/index">解决方案</a><i /></p>
 
                   </li>
                   <li>
-                    <p><a href="http://182.92.161.103:8888/development/index">开发运维</a><i /></p>
+                    <p><a href="https://www.kexinyun.org.cn/development/index">开发运维</a><i /></p>
 
                   </li>
                   <li>
-                    <p><a href="http://182.92.161.103:8888/security/index">安全与风险管理</a><i /></p>
+                    <p><a href="https://www.kexinyun.org.cn/security/index">安全与风险管理</a><i /></p>
 
                   </li>
                   <li class="li05 ">
-                    <p><a href="http://182.92.161.103:8888/industry/index">行业云</a><i /></p>
+                    <p><a href="https://www.kexinyun.org.cn/industry/index">行业云</a><i /></p>
 
                   </li>
                   <li>
-                    <p><a href="http://182.92.161.103:8888/performance/usability">性能及监测</a><i /></p>
+                    <p><a href="https://www.kexinyun.org.cn/performance/usability">性能及监测</a><i /></p>
 
                   </li>
                   <li class="on">
-                    <p><a href="http://182.92.161.103:8888/credit/rating">综合信用评估</a></p>
+                    <p><a href="https://www.kexinyun.org.cn/credit/rating">综合信用评估</a></p>
 
                   </li>
                   <li>
-                    <p><a href="http://182.92.161.103:8888/cloud/insurance">云保险</a></p>
+                    <p><a href="https://www.kexinyun.org.cn/cloud/insurance">云保险</a></p>
                   </li>
                   <li>
-                    <p><a href=" http://182.92.161.103:8888/about/index">关于可信云</a><i /></p>
+                    <p><a href=" https://www.kexinyun.org.cn/about/index">关于可信云</a><i /></p>
                   </li>
                 </ul>
               </nav>

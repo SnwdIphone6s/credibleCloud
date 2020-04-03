@@ -189,6 +189,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/setCloud',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/myTask/setMyCloud'),
+        name: 'setMyCloud',
+        hidden: true,
+        meta: { title: 'register', affix: true }
+      }
+    ]
+  },
+  {
     path: '/download_momory',
     component: Layout,
     children: [

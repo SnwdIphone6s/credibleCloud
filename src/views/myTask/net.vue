@@ -42,7 +42,6 @@
 </template>
 <script>
 import { testInstance } from '@/api/myTask'
-import Cookies from 'js-cookie'
 export default {
   data() {
     return {

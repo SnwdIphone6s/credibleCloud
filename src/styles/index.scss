@@ -322,11 +322,15 @@ aside {
 .el-step.is-horizontal .el-step__line {
   top: 20px;
 }
+.myTask .is-left .el-tabs__item{
+  height:80px;
+}
 .el-form-item--medium .el-form-item__label {
   text-align: left;
 }
 .el-pagination {
   padding-top: 50px;
+  background:#fff;
 }
 @media screen and (max-width: 544px) {
   .el-menu-item.is-active.submenu-title-noDropdown {
@@ -491,4 +495,10 @@ aside {
     background: none;
     border: none;
     border-bottom:2px solid #fff !important;
+}
+.computingCloud .el-form-item--medium .el-form-item__content{
+  min-width:140px;
+}
+.el-transfer-panel{
+  width:220px;
 }

@@ -13,7 +13,7 @@ const name = defaultSettings.title || '性能众测 - 可信云' // page title
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
 // port = 9527 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || process.env.npm_config_port || 9527 // dev port
+const port = process.env.port || process.env.npm_config_port || 9528 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -40,8 +40,11 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        // target: `http://122.14.199.232:8090/cloud-BenchMark-v1`,
-        target: `http://42.81.134.34:8090/cloud-BenchMark-v1`,
+        target: `http://122.14.199.232:8090/cloud-BenchMark-v1`,
+        // target: `http://42.81.134.34/cloud-BenchMark-v1`,
+        // target: `http://cb.kexinyun.org.cn/cloud-BenchMark-v1`,
+       
+        // 8090
         // target: `http://127.0.0.1:${port}/mock`,
         changeOrigin: true,
         pathRewrite: {
